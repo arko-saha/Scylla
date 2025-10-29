@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrist Spin Masterclass Package - Scylla</title>
+    <meta name="description" content="Master the art of wrist-spin with our 4-session virtual program. Learn variations, tactical setup, and field settings from specialist coaches.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cricket-green': '#2D5016',
+                        'cricket-gold': '#D4AF37',
+                        'cricket-red': '#DC2626',
+                        'cricket-blue': '#1E40AF',
+                        'cricket-purple': '#7C3AED'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #2D5016 0%, #D4AF37 50%, #1E40AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cricket-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50 font-inter overflow-x-hidden">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center group">
+                    <div class="flex-shrink-0 flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cricket-green via-cricket-gold to-cricket-blue rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">Scylla</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="index.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                        <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                        <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                        <a href="career-hub.html" class="text-cricket-green bg-green-50 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                        <a href="login.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                        <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-user-plus mr-2"></i>Sign Up
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button type="button" class="text-gray-700 hover:text-cricket-green focus:outline-none focus:text-cricket-green p-2 rounded-lg hover:bg-green-50 transition-all duration-300" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2 bg-white/95 backdrop-blur-md border-t border-gray-100">
+                <a href="index.html" class="text-gray-900 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                <a href="career-hub.html" class="text-cricket-green bg-green-50 block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                <a href="login.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white block px-4 py-3 rounded-xl text-base font-semibold hover:shadow-lg transition-all duration-300 text-center">
+                    <i class="fas fa-user-plus mr-2"></i>Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-br from-cricket-purple via-purple-600 to-pink-600 text-white overflow-hidden pt-20">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-cricket-gold rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+        <div class="absolute top-40 right-10 w-96 h-96 bg-cricket-green rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div class="text-center">
+                <div class="inline-block mb-8">
+                    <span class="bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-purple px-8 py-3 rounded-full text-lg font-bold shadow-lg">
+                        <i class="fas fa-spinner mr-2"></i>Masterclass Package
+                    </span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-8">
+                    Master the Art of 
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                        Wrist-Spin
+                    </span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-100 leading-relaxed max-w-4xl mx-auto mb-12">
+                    A 4-session virtual program to master wrist-spin bowling. Go beyond the basics to learn variations, tactical setup, and field settings from specialist coaches.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+                    <button onclick="scrollToBooking()" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-purple px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-play mr-3 group-hover:scale-110 transition-transform duration-300"></i>Book Package - £150
+                    </button>
+                    <a href="#features" class="group glass-effect border-2 border-white/30 text-white px-12 py-5 rounded-2xl text-lg font-bold hover:bg-white/20 hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-info-circle mr-3 group-hover:scale-110 transition-transform duration-300"></i>Learn More
+                    </a>
+                </div>
+                
+                <!-- Package Overview -->
+                <div class="bg-white/20 backdrop-blur-sm rounded-3xl p-8 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-bold text-white mb-6">4-Session Masterclass Program</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-cricket-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-cricket-purple font-bold text-xl">1</span>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Stock Ball</h4>
+                            <p class="text-sm text-gray-200">Perfect your basic leg-spin delivery</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-cricket-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-cricket-purple font-bold text-xl">2</span>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Googly</h4>
+                            <p class="text-sm text-gray-200">Master the art of deception</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-cricket-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-cricket-purple font-bold text-xl">3</span>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Flipper</h4>
+                            <p class="text-sm text-gray-200">Add the skidding delivery</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-cricket-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-cricket-purple font-bold text-xl">4</span>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Tactics</h4>
+                            <p class="text-sm text-gray-200">Field settings and game plans</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-32 bg-gradient-to-br from-white via-gray-50 to-purple-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    What's Included in Your 
+                    <span class="gradient-text">Masterclass</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Four intensive 1-on-1 live video sessions with specialist wrist-spin coaches
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Session 1 -->
+                <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cricket-purple to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <span class="text-white font-bold text-2xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Stock Ball Mastery</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Perfect your basic leg-spin delivery with proper grip, wrist position, and release technique.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-purple mr-3"></i>
+                            Grip fundamentals
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-purple mr-3"></i>
+                            Wrist position
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-purple mr-3"></i>
+                            Release technique
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Session 2 -->
+                <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <span class="text-cricket-purple font-bold text-2xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Googly Development</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Master the art of deception with the googly, learning to disguise it from your stock ball.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Grip variations
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Deception techniques
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Practice drills
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Session 3 -->
+                <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cricket-green to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <span class="text-white font-bold text-2xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Flipper & Variations</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Add the skidding flipper and other variations to complete your bowling arsenal.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Flipper technique
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Top-spinner
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Slider variations
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Session 4 -->
+                <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cricket-blue to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <span class="text-white font-bold text-2xl">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Tactical Masterclass</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Learn field settings, game plans, and how to set up batsmen with your variations.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                            Field placements
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                            Batsman setup
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                            Game situations
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Booking Section -->
+    <section id="booking" class="py-32 bg-gradient-to-br from-white via-gray-50 to-purple-50 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <div class="bg-white rounded-3xl shadow-2xl p-16 border border-gray-100">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    Ready to Master 
+                    <span class="gradient-text">Wrist-Spin?</span>
+                </h2>
+                <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Join aspiring spinners who have elevated their game with our specialist masterclass program.
+                </p>
+                
+                <!-- Pricing Card -->
+                <div class="bg-gradient-to-br from-cricket-purple to-purple-600 rounded-3xl p-12 text-white mb-12 max-w-2xl mx-auto">
+                    <div class="text-center">
+                        <h3 class="text-3xl font-bold mb-4">4-Session Masterclass Package</h3>
+                        <div class="text-6xl font-black mb-4">£150</div>
+                        <p class="text-xl text-gray-200 mb-8">One-time payment</p>
+                        
+                        <div class="space-y-4 text-left">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Four 1-on-1 live video sessions</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Stock ball analysis and refinement</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Googly and flipper development</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Tactical masterclass and field settings</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Personalized practice drills</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="openBookingModal()" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-purple px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center mb-8">
+                    <i class="fas fa-play mr-3 group-hover:scale-110 transition-transform duration-300"></i>Book Your Masterclass Now
+                </button>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap items-center justify-center gap-8 pt-8 border-t border-gray-200">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-shield-alt text-cricket-purple text-xl"></i>
+                        <span class="text-gray-600 font-medium">Secure Payment</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-lock text-cricket-gold text-xl"></i>
+                        <span class="text-gray-600 font-medium">Privacy Protected</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-video text-cricket-green text-xl"></i>
+                        <span class="text-gray-600 font-medium">Live Video Sessions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-cricket-purple text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-5"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cricket-gold via-cricket-green to-cricket-blue"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-8 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold via-cricket-purple to-cricket-blue rounded-2xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-2xl"></i>
+                        </div>
+                        <span class="text-3xl font-black gradient-text">Scylla</span>
+                    </div>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed max-w-md">
+                        The premier platform connecting cricket talent with opportunities across the UK. Building the next generation of cricket stars.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-purple transition-all duration-300 group">
+                            <i class="fab fa-twitter text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-purple transition-all duration-300 group">
+                            <i class="fab fa-facebook text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-purple transition-all duration-300 group">
+                            <i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-purple transition-all duration-300 group">
+                            <i class="fab fa-linkedin text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">For Players</h3>
+                    <ul class="space-y-4">
+                        <li><a href="signup.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Create Profile
+                        </a></li>
+                        <li><a href="find-opportunities.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Find Opportunities
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Career Hub
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">Services</h3>
+                    <ul class="space-y-4">
+                        <li><a href="wrist-spin-masterclass.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Wrist Spin Masterclass
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>All Services
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-16 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">&copy; 2024 Scylla. All rights reserved.</p>
+                    <div class="flex space-x-8 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">Book Your Masterclass</h3>
+                <button onclick="closeBookingModal()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-purple focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-purple focus:border-transparent" required>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-purple focus:border-transparent" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                    <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-purple focus:border-transparent" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Current Playing Level</label>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-purple focus:border-transparent" required>
+                        <option value="">Select your level</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="club">Club Level</option>
+                        <option value="county-age-group">County Age Group</option>
+                        <option value="academy">Academy</option>
+                        <option value="semi-pro">Semi-Professional</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Session Times</label>
+                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-purple focus:border-transparent" rows="3" placeholder="Please indicate your preferred days and times for the 4 sessions..."></textarea>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <h4 class="font-semibold text-gray-900 mb-4">Service Summary</h4>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Wrist Spin Masterclass Package</span>
+                        <span class="font-bold text-cricket-purple">£150</span>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-2">Includes: Four 1-on-1 live video sessions, technique analysis, and personalized drills</div>
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-cricket-purple to-pink-600 text-white py-4 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-credit-card mr-2"></i>Proceed to Payment
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        function scrollToBooking() {
+            document.getElementById('booking').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Booking modal functions
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBookingModal();
+            }
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would integrate with your payment processor
+            alert('Thank you for your booking! You will be redirected to our secure payment page.');
+        });
+    </script>
+</body>
+</html>

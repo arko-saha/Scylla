@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Coming Soon - Scylla</title>
+    <meta name="description" content="This service is coming soon. Check back later for more information.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cricket-green': '#2D5016',
+                        'cricket-gold': '#D4AF37',
+                        'cricket-red': '#DC2626',
+                        'cricket-blue': '#1E40AF',
+                        'cricket-purple': '#7C3AED'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #2D5016 0%, #D4AF37 50%, #1E40AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-green-50 to-blue-50 font-inter overflow-x-hidden">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center group">
+                    <div class="flex-shrink-0 flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cricket-green via-cricket-gold to-cricket-blue rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">Scylla</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="index.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                        <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                        <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                        <a href="career-hub.html" class="text-cricket-green bg-green-50 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                        <a href="login.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                        <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-user-plus mr-2"></i>Sign Up
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button type="button" class="text-gray-700 hover:text-cricket-green focus:outline-none focus:text-cricket-green p-2 rounded-lg hover:bg-green-50 transition-all duration-300" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2 bg-white/95 backdrop-blur-md border-t border-gray-100">
+                <a href="index.html" class="text-gray-900 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                <a href="career-hub.html" class="text-cricket-green bg-green-50 block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                <a href="login.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white block px-4 py-3 rounded-xl text-base font-semibold hover:shadow-lg transition-all duration-300 text-center">
+                    <i class="fas fa-user-plus mr-2"></i>Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Coming Soon Section -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-br from-cricket-green via-green-600 to-cricket-blue text-white overflow-hidden pt-20">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+            <div class="w-32 h-32 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
+                <i class="fas fa-tools text-6xl text-cricket-green"></i>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-8">
+                Service 
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                    Coming Soon
+                </span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-100 leading-relaxed max-w-4xl mx-auto mb-12">
+                We're working hard to bring you this amazing service. Check back soon for updates and be the first to know when it launches!
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+                <a href="career-hub.html" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-green px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                    <i class="fas fa-arrow-left mr-3 group-hover:scale-110 transition-transform duration-300"></i>Back to Career Hub
+                </a>
+                <a href="index.html" class="group bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white px-12 py-5 rounded-2xl text-lg font-bold hover:bg-white/30 hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                    <i class="fas fa-home mr-3 group-hover:scale-110 transition-transform duration-300"></i>Go Home
+                </a>
+            </div>
+            
+            <!-- Notify Me Section -->
+            <div class="bg-white/20 backdrop-blur-sm rounded-3xl p-8 max-w-2xl mx-auto">
+                <h3 class="text-2xl font-bold text-white mb-4">Get Notified When Available</h3>
+                <p class="text-gray-200 mb-6">Be the first to know when this service launches!</p>
+                <form class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" placeholder="Enter your email address" class="flex-1 px-6 py-4 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-cricket-gold">
+                    <button type="submit" class="bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-green px-8 py-4 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-bell mr-2"></i>Notify Me
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-cricket-green text-white py-20 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cricket-gold via-cricket-blue to-cricket-purple"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-8 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold via-cricket-blue to-cricket-purple rounded-2xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-2xl"></i>
+                        </div>
+                        <span class="text-3xl font-black gradient-text">Scylla</span>
+                    </div>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed max-w-md">
+                        The premier platform connecting cricket talent with opportunities across the UK. Building the next generation of cricket stars.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">For Players</h3>
+                    <ul class="space-y-4">
+                        <li><a href="signup.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Create Profile
+                        </a></li>
+                        <li><a href="find-opportunities.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Find Opportunities
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Career Hub
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">Services</h3>
+                    <ul class="space-y-4">
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>All Services
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-16 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">&copy; 2024 Scylla. All rights reserved.</p>
+                    <div class="flex space-x-8 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! We\'ll notify you when this service becomes available.');
+        });
+    </script>
+</body>
+</html>

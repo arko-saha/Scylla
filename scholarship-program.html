@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Scylla Scholarship: We Invest in Potential - Scylla</title>
+    <meta name="description" content="The Scylla Scholarship provides fully funded, year-long elite support for the most promising young players. Apply for our competitive scholarship program.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cricket-green': '#2D5016',
+                        'cricket-gold': '#D4AF37',
+                        'cricket-red': '#DC2626',
+                        'cricket-blue': '#1E40AF',
+                        'cricket-purple': '#7C3AED'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #2D5016 0%, #D4AF37 50%, #1E40AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cricket-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-green-50 to-blue-50 font-inter overflow-x-hidden">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center group">
+                    <div class="flex-shrink-0 flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cricket-green via-cricket-gold to-cricket-blue rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">Scylla</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="index.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                        <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                        <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                        <a href="career-hub.html" class="text-cricket-green bg-green-50 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                        <a href="login.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                        <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-user-plus mr-2"></i>Sign Up
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button type="button" class="text-gray-700 hover:text-cricket-green focus:outline-none focus:text-cricket-green p-2 rounded-lg hover:bg-green-50 transition-all duration-300" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2 bg-white/95 backdrop-blur-md border-t border-gray-100">
+                <a href="index.html" class="text-gray-900 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                <a href="career-hub.html" class="text-cricket-green bg-green-50 block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                <a href="login.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white block px-4 py-3 rounded-xl text-base font-semibold hover:shadow-lg transition-all duration-300 text-center">
+                    <i class="fas fa-user-plus mr-2"></i>Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-br from-cricket-gold via-yellow-500 to-orange-500 text-cricket-green overflow-hidden pt-20">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-cricket-green rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+        <div class="absolute top-40 right-10 w-96 h-96 bg-cricket-blue rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div class="text-center">
+                <div class="inline-block mb-8">
+                    <span class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg">
+                        <i class="fas fa-trophy mr-2"></i>Scholarship Program
+                    </span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-8">
+                    Your Talent Deserves a Platform. 
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cricket-green to-cricket-blue">
+                        We're Here to Build It.
+                    </span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-cricket-green leading-relaxed max-w-4xl mx-auto mb-12">
+                    The Scylla Scholarship is our commitment to the future of the game. Each year, we identify a select group of the most promising young players and provide them with fully funded, year-long elite support.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+                    <button onclick="scrollToApplication()" class="group bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-graduation-cap mr-3 group-hover:scale-110 transition-transform duration-300"></i>Learn More & Apply
+                    </button>
+                    <a href="#benefits" class="group glass-effect border-2 border-cricket-green/30 text-cricket-green px-12 py-5 rounded-2xl text-lg font-bold hover:bg-cricket-green/20 hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-info-circle mr-3 group-hover:scale-110 transition-transform duration-300"></i>View Benefits
+                    </a>
+                </div>
+                
+                <!-- Application Timeline -->
+                <div class="bg-white/20 backdrop-blur-sm rounded-3xl p-8 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-bold text-cricket-green mb-6">Application Timeline</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-cricket-green rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white font-bold text-xl">1</span>
+                            </div>
+                            <h4 class="font-semibold text-cricket-green mb-2">Applications Open</h4>
+                            <p class="text-sm text-cricket-green">September 1st, 2024</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-cricket-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white font-bold text-xl">2</span>
+                            </div>
+                            <h4 class="font-semibold text-cricket-green mb-2">Deadline</h4>
+                            <p class="text-sm text-cricket-green">November 30th, 2024</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-cricket-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white font-bold text-xl">3</span>
+                            </div>
+                            <h4 class="font-semibold text-cricket-green mb-2">Scholars Announced</h4>
+                            <p class="text-sm text-cricket-green">January 15th, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-32 bg-gradient-to-br from-white via-gray-50 to-green-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    What's Included in Your 
+                    <span class="gradient-text">Scholarship</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    A comprehensive year-long package worth over £5,000, fully funded by Scylla and our partners
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cricket-green to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-user-tie text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Dedicated Mentor</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        A personal mentor from our elite coach network to guide your development throughout the year.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Monthly 1-on-1 sessions
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Personalized development plan
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Career guidance
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cricket-gold to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-video text-3xl text-cricket-green"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Full Service Suite</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Access to our complete range of video analysis and coaching services throughout the year.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Unlimited video analysis
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Biomechanics reports
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Mental performance coaching
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cricket-blue to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-dumbbell text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">S&C & Nutrition</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Professional strength & conditioning programs and nutrition guidance tailored to your needs.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                            Personalized S&C programs
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                            Nutrition consultations
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                            Recovery protocols
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Benefit 4 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cricket-purple to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-gift text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Professional Equipment</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        High-quality cricket equipment from our partner brands to support your development.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-purple mr-3"></i>
+                            Bat and protective gear
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-purple mr-3"></i>
+                            Training equipment
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-purple mr-3"></i>
+                            Performance tracking tools
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Benefit 5 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cricket-red to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-users text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Elite Network Access</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Connect with our network of scouts, coaches, and fellow scholars for opportunities and support.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-red mr-3"></i>
+                            Scout network access
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-red mr-3"></i>
+                            Scholar community
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-red mr-3"></i>
+                            Exclusive events
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Benefit 6 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cricket-green to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-trophy text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Recognition & Exposure</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Featured profile on our platform and recognition as a Scylla Scholar.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Featured profile
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Scholar badge
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Media opportunities
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility & Application Section -->
+    <section id="application" class="py-32 bg-gradient-to-br from-cricket-green via-green-700 to-cricket-blue text-white relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">
+                    Are You 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                        Eligible?
+                    </span>
+                </h2>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                    This is a highly competitive application process. We're looking for the most promising young cricketers with exceptional potential.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">Eligibility Criteria</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 mt-1"></i>
+                                <span>Age: 14-18 years old (as of September 1st, 2024)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 mt-1"></i>
+                                <span>Currently playing at County Age Group level or higher</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 mt-1"></i>
+                                <span>Demonstrated exceptional potential and commitment</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 mt-1"></i>
+                                <span>Active Scylla profile with verified stats</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 mt-1"></i>
+                                <span>Recommendation from current coach or academy</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">Selection Process</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-cricket-gold rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-cricket-green font-bold text-sm">1</span>
+                                </div>
+                                <span>Initial application review</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-cricket-gold rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-cricket-green font-bold text-sm">2</span>
+                                </div>
+                                <span>Video assessment by our expert panel</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-cricket-gold rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-cricket-green font-bold text-sm">3</span>
+                                </div>
+                                <span>Interview with our selection committee</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-cricket-gold rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-cricket-green font-bold text-sm">4</span>
+                                </div>
+                                <span>Final selection and announcement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Application Requirements</h3>
+                    <div class="space-y-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-file-alt text-2xl text-cricket-green"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Complete Application Form</h4>
+                            <p class="text-sm text-gray-300">Personal details, playing history, and achievements</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-video text-2xl text-cricket-green"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Video Submission</h4>
+                            <p class="text-sm text-gray-300">5-10 minute highlight reel showcasing your skills</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-user-tie text-2xl text-cricket-green"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Coach Recommendation</h4>
+                            <p class="text-sm text-gray-300">Letter of recommendation from your current coach</p>
+                        </div>
+                        
+                        <button onclick="openApplicationModal()" class="w-full bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-green py-4 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-paper-plane mr-2"></i>Start Application
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-cricket-green text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-5"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cricket-gold via-cricket-blue to-cricket-purple"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-8 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold via-cricket-blue to-cricket-purple rounded-2xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-2xl"></i>
+                        </div>
+                        <span class="text-3xl font-black gradient-text">Scylla</span>
+                    </div>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed max-w-md">
+                        The premier platform connecting cricket talent with opportunities across the UK. Building the next generation of cricket stars.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-twitter text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-facebook text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-linkedin text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">For Players</h3>
+                    <ul class="space-y-4">
+                        <li><a href="signup.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Create Profile
+                        </a></li>
+                        <li><a href="find-opportunities.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Find Opportunities
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Career Hub
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">Programs</h3>
+                    <ul class="space-y-4">
+                        <li><a href="scholarship-program.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Scholarship Program
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>All Services
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-16 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">&copy; 2024 Scylla. All rights reserved.</p>
+                    <div class="flex space-x-8 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">Scholarship Application</h3>
+                <button onclick="closeApplicationModal()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-green rounded-xl p-6 mb-8">
+                <h4 class="font-bold text-lg mb-2">Applications Open: September 1st, 2024</h4>
+                <p class="text-sm">The application form will be available on this date. Please check back then to begin your application process.</p>
+            </div>
+            
+            <div class="text-center py-12">
+                <div class="w-24 h-24 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-calendar-alt text-3xl text-cricket-green"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Application Coming Soon</h3>
+                <p class="text-gray-600 mb-8">We're preparing the application form for the 2024-2025 scholarship program. Applications will open on September 1st, 2024.</p>
+                <button onclick="closeApplicationModal()" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-8 py-3 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-bell mr-2"></i>Notify Me When Available
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        function scrollToApplication() {
+            document.getElementById('application').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Application modal functions
+        function openApplicationModal() {
+            document.getElementById('applicationModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeApplicationModal() {
+            document.getElementById('applicationModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.getElementById('applicationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeApplicationModal();
+            }
+        });
+    </script>
+</body>
+</html>

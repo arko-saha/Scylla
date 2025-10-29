@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized S&C Program Design - Scylla</title>
+    <meta name="description" content="A generic gym program won't cut it. Get a 6-week, cricket-specific S&C program designed by a certified performance coach, tailored to your age, role, and goals.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cricket-green': '#2D5016',
+                        'cricket-gold': '#D4AF37',
+                        'cricket-red': '#DC2626',
+                        'cricket-blue': '#1E40AF',
+                        'cricket-purple': '#7C3AED'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #2D5016 0%, #D4AF37 50%, #1E40AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cricket-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-gray-50 to-red-50 font-inter overflow-x-hidden">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center group">
+                    <div class="flex-shrink-0 flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cricket-green via-cricket-gold to-cricket-blue rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">Scylla</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="index.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                        <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                        <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                        <a href="career-hub.html" class="text-cricket-green bg-green-50 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                        <a href="login.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                        <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-user-plus mr-2"></i>Sign Up
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button type="button" class="text-gray-700 hover:text-cricket-green focus:outline-none focus:text-cricket-green p-2 rounded-lg hover:bg-green-50 transition-all duration-300" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2 bg-white/95 backdrop-blur-md border-t border-gray-100">
+                <a href="index.html" class="text-gray-900 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                <a href="career-hub.html" class="text-cricket-green bg-green-50 block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                <a href="login.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white block px-4 py-3 rounded-xl text-base font-semibold hover:shadow-lg transition-all duration-300 text-center">
+                    <i class="fas fa-user-plus mr-2"></i>Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-br from-cricket-red via-red-600 to-orange-600 text-white overflow-hidden pt-20">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-cricket-gold rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+        <div class="absolute top-40 right-10 w-96 h-96 bg-cricket-green rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-10 animate-fade-in">
+                    <div class="space-y-6">
+                        <div class="inline-block">
+                            <span class="bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-red px-6 py-2 rounded-full text-sm font-semibold mb-6 inline-block">
+                                <i class="fas fa-dumbbell mr-2"></i>Performance Training
+                            </span>
+                        </div>
+                        <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight">
+                            Build Your 
+                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                                Cricket-Specific Strength
+                            </span>
+                        </h1>
+                        <p class="text-xl md:text-2xl text-gray-100 leading-relaxed max-w-2xl">
+                            A generic gym program won't cut it. Get a 6-week, cricket-specific S&C program designed by a certified performance coach, tailored to your age, role (bowler/batsman), and goals.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6">
+                        <button onclick="scrollToBooking()" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-red px-10 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 text-center">
+                            <i class="fas fa-play mr-3 group-hover:scale-110 transition-transform duration-300"></i>Get Your Program - £150
+                        </button>
+                        <a href="#features" class="group glass-effect border-2 border-white/30 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/20 hover:scale-105 transition-all duration-300 text-center">
+                            <i class="fas fa-info-circle mr-3 group-hover:scale-110 transition-transform duration-300"></i>Learn More
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="flex flex-wrap items-center gap-8 pt-8">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-star text-cricket-gold"></i>
+                            <span class="text-sm text-gray-200">4.9/5 Rating (85+ reviews)</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shield-alt text-cricket-gold"></i>
+                            <span class="text-sm text-gray-200">Certified Coaches</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock text-cricket-gold"></i>
+                            <span class="text-sm text-gray-200">6-Week Program</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative animate-slide-up">
+                    <!-- Program Preview Card -->
+                    <div class="glass-effect rounded-3xl p-10 shadow-2xl">
+                        <div class="text-center space-y-8">
+                            <div class="w-24 h-24 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto shadow-lg animate-pulse-slow">
+                                <i class="fas fa-dumbbell text-4xl text-cricket-red"></i>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-3xl font-bold mb-2">Personalized S&C Program</h3>
+                                <p class="text-gray-200 text-lg">Cricket-specific training designed for your role and goals</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="text-center group">
+                                    <div class="text-2xl font-black text-cricket-gold mb-2 group-hover:scale-110 transition-transform duration-300">6</div>
+                                    <div class="text-sm text-gray-300 font-medium">Weeks</div>
+                                </div>
+                                <div class="text-center group">
+                                    <div class="text-2xl font-black text-cricket-gold mb-2 group-hover:scale-110 transition-transform duration-300">PDF</div>
+                                    <div class="text-sm text-gray-300 font-medium">Program</div>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-4">
+                                <div class="flex items-center justify-center space-x-4 text-sm text-gray-300">
+                                    <span class="flex items-center">
+                                        <i class="fas fa-user text-cricket-gold mr-2"></i>
+                                        Personalized
+                                    </span>
+                                    <span class="flex items-center">
+                                        <i class="fas fa-video text-cricket-gold mr-2"></i>
+                                        Video Links
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Overview -->
+    <section id="features" class="py-32 bg-gradient-to-br from-white via-gray-50 to-red-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    What You'll Receive
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    A comprehensive 6-week program with initial consultation and exercise video links
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cricket-red to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-comments text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Initial Consultation</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Online consultation to understand your current fitness level, goals, and specific needs for your cricket role.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-red mr-3"></i>
+                            Fitness assessment
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-red mr-3"></i>
+                            Goal setting
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-red mr-3"></i>
+                            Role-specific needs
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cricket-gold to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-file-pdf text-3xl text-cricket-red"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">6-Week Program</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        A personalized 6-week PDF program with progressive exercises designed specifically for cricket performance.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Progressive structure
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Cricket-specific exercises
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Detailed instructions
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cricket-green to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-video text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Exercise Video Links</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Access to video demonstrations of all exercises to ensure proper form and technique throughout your program.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Form demonstrations
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Technique guidance
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Safety instructions
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Coaches Section -->
+    <section class="py-32 bg-gradient-to-br from-cricket-red via-red-700 to-orange-600 text-white relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">
+                    Your Expert 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                        Performance Coaches
+                    </span>
+                </h2>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                    Certified performance coaches with extensive experience in cricket-specific strength and conditioning
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold mb-4">Cricket-Specific Expertise</h3>
+                        <p class="text-gray-200 mb-6">
+                            Our coaches specialize in cricket performance, understanding the unique physical demands of batting, bowling, and fielding.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-certificate text-cricket-gold text-2xl"></i>
+                            <span class="text-lg font-semibold">Certified Performance Coaches</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold mb-4">Personalized Approach</h3>
+                        <p class="text-gray-200 mb-6">
+                            Every program is tailored to your specific role, age, current fitness level, and performance goals. No generic programs here.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-user-cog text-cricket-gold text-2xl"></i>
+                            <span class="text-lg font-semibold">Individualized Programs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Success Story</h3>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-quote-left text-2xl text-cricket-red"></i>
+                        </div>
+                        <blockquote class="text-lg text-gray-200 italic mb-6">
+                            "The personalized program transformed my bowling. I gained 3mph in pace and felt much stronger in the field. The cricket-specific exercises made all the difference."
+                        </blockquote>
+                        <div class="text-cricket-gold font-semibold">- Tom, 22, County Academy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Booking Section -->
+    <section id="booking" class="py-32 bg-gradient-to-br from-white via-gray-50 to-red-50 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <div class="bg-white rounded-3xl shadow-2xl p-16 border border-gray-100">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    Ready to Build Your 
+                    <span class="gradient-text">Cricket Strength?</span>
+                </h2>
+                <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Get a personalized 6-week program designed specifically for your cricket role and performance goals.
+                </p>
+                
+                <!-- Pricing Card -->
+                <div class="bg-gradient-to-br from-cricket-red to-red-600 rounded-3xl p-12 text-white mb-12 max-w-2xl mx-auto">
+                    <div class="text-center">
+                        <h3 class="text-3xl font-bold mb-4">Personalized S&C Program</h3>
+                        <div class="text-6xl font-black mb-4">£150</div>
+                        <p class="text-xl text-gray-200 mb-8">One-time program design</p>
+                        
+                        <div class="space-y-4 text-left">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Initial online consultation</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Personalized 6-week PDF program</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Exercise video links</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Cricket-specific exercises</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Tailored to your role and goals</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="openBookingModal()" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-red px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center mb-8">
+                    <i class="fas fa-play mr-3 group-hover:scale-110 transition-transform duration-300"></i>Get Your Program Now
+                </button>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap items-center justify-center gap-8 pt-8 border-t border-gray-200">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-shield-alt text-cricket-red text-xl"></i>
+                        <span class="text-gray-600 font-medium">Secure Payment</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-certificate text-cricket-gold text-xl"></i>
+                        <span class="text-gray-600 font-medium">Certified Coaches</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-dumbbell text-cricket-green text-xl"></i>
+                        <span class="text-gray-600 font-medium">Cricket-Specific</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-32 bg-gradient-to-br from-gray-50 via-white to-red-50 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    Frequently Asked 
+                    <span class="gradient-text">Questions</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Everything you need to know about our personalized S&C program design service
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">How is this different from a generic gym program?</h3>
+                    <p class="text-gray-600">This program is specifically designed for cricket performance, taking into account the unique physical demands of batting, bowling, and fielding. It's tailored to your specific role, age, and goals rather than being a one-size-fits-all approach.</p>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">What equipment do I need?</h3>
+                    <p class="text-gray-600">The program is designed to be accessible with basic gym equipment. We'll discuss your available equipment during the consultation and tailor the exercises accordingly. Most exercises can be performed with standard gym equipment.</p>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">How long does the consultation take?</h3>
+                    <p class="text-gray-600">The initial consultation typically takes 30-45 minutes. This allows us to understand your current fitness level, goals, available equipment, and specific needs for your cricket role.</p>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Can I modify the program if needed?</h3>
+                    <p class="text-gray-600">The program is designed to be progressive and adaptable. If you have any concerns or need modifications due to injury or schedule changes, you can contact us for guidance on adjustments.</p>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Is this suitable for players at any level?</h3>
+                    <p class="text-gray-600">Yes, the program is designed to be adaptable for players at all levels. During the consultation, we'll assess your current fitness level and design the program accordingly, whether you're just starting out or looking to enhance your existing fitness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-cricket-red text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-5"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cricket-gold via-cricket-green to-cricket-blue"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-8 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold via-cricket-red to-cricket-blue rounded-2xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-2xl"></i>
+                        </div>
+                        <span class="text-3xl font-black gradient-text">Scylla</span>
+                    </div>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed max-w-md">
+                        The premier platform connecting cricket talent with opportunities across the UK. Building the next generation of cricket stars.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-red transition-all duration-300 group">
+                            <i class="fab fa-twitter text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-red transition-all duration-300 group">
+                            <i class="fab fa-facebook text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-red transition-all duration-300 group">
+                            <i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-red transition-all duration-300 group">
+                            <i class="fab fa-linkedin text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">For Players</h3>
+                    <ul class="space-y-4">
+                        <li><a href="signup.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Create Profile
+                        </a></li>
+                        <li><a href="find-opportunities.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Find Opportunities
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Career Hub
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">Services</h3>
+                    <ul class="space-y-4">
+                        <li><a href="s-c-program.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>S&C Program Design
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>All Services
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-16 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">&copy; 2024 Scylla. All rights reserved.</p>
+                    <div class="flex space-x-8 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">Get Your S&C Program</h3>
+                <button onclick="closeBookingModal()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-red focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-red focus:border-transparent" required>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-red focus:border-transparent" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                    <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-red focus:border-transparent" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Age</label>
+                    <input type="number" min="16" max="35" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-red focus:border-transparent" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Primary Role</label>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-red focus:border-transparent" required>
+                        <option value="">Select your role</option>
+                        <option value="batsman">Batsman</option>
+                        <option value="bowler">Bowler</option>
+                        <option value="all-rounder">All-Rounder</option>
+                        <option value="wicket-keeper">Wicket-Keeper</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Current Fitness Level</label>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-red focus:border-transparent" required>
+                        <option value="">Select your level</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Primary Goals</label>
+                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-red focus:border-transparent" rows="3" placeholder="What are your main fitness and performance goals? (e.g., increase bowling pace, improve batting power, better fielding agility)..." required></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Available Equipment</label>
+                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-red focus:border-transparent" rows="2" placeholder="What gym equipment do you have access to? (e.g., free weights, machines, resistance bands, etc.)..." required></textarea>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <h4 class="font-semibold text-gray-900 mb-4">Service Summary</h4>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Personalized S&C Program Design</span>
+                        <span class="font-bold text-cricket-red">£150</span>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-2">Includes: Initial consultation, 6-week PDF program, and exercise video links</div>
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-cricket-red to-red-600 text-white py-4 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-credit-card mr-2"></i>Proceed to Payment
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        function scrollToBooking() {
+            document.getElementById('booking').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Booking modal functions
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBookingModal();
+            }
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would integrate with your payment processor
+            alert('Thank you for your booking! You will be redirected to our secure payment page.');
+        });
+    </script>
+</body>
+</html>

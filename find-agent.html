@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Representation: Find Your Agent - Scylla</title>
+    <meta name="description" content="Take the next step in your professional journey. Connect with vetted, credible cricket agents to help navigate contracts, sponsorships, and your professional career.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cricket-green': '#2D5016',
+                        'cricket-gold': '#D4AF37',
+                        'cricket-red': '#DC2626',
+                        'cricket-blue': '#1E40AF',
+                        'cricket-purple': '#7C3AED'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #2D5016 0%, #D4AF37 50%, #1E40AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cricket-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50 font-inter overflow-x-hidden">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center group">
+                    <div class="flex-shrink-0 flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cricket-green via-cricket-gold to-cricket-blue rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">Scylla</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="index.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                        <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                        <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                        <a href="career-hub.html" class="text-cricket-green bg-green-50 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                        <a href="login.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                        <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-user-plus mr-2"></i>Sign Up
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button type="button" class="text-gray-700 hover:text-cricket-green focus:outline-none focus:text-cricket-green p-2 rounded-lg hover:bg-green-50 transition-all duration-300" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2 bg-white/95 backdrop-blur-md border-t border-gray-100">
+                <a href="index.html" class="text-gray-900 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                <a href="career-hub.html" class="text-cricket-green bg-green-50 block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                <a href="login.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white block px-4 py-3 rounded-xl text-base font-semibold hover:shadow-lg transition-all duration-300 text-center">
+                    <i class="fas fa-user-plus mr-2"></i>Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-gray-800 to-cricket-blue text-white overflow-hidden pt-20">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-cricket-gold rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+        <div class="absolute top-40 right-10 w-96 h-96 bg-cricket-green rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div class="text-center">
+                <div class="inline-block mb-8">
+                    <span class="bg-gradient-to-r from-cricket-gold to-yellow-400 text-gray-900 px-8 py-3 rounded-full text-lg font-bold shadow-lg">
+                        <i class="fas fa-handshake mr-2"></i>Professional Representation
+                    </span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-8">
+                    Take the Next Step in Your 
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                        Professional Journey
+                    </span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-100 leading-relaxed max-w-4xl mx-auto mb-12">
+                    This isn't a booking; it's an application. For elite players with demonstrable high potential, we provide a curated matchmaking service connecting you with our network of vetted, credible cricket agents.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+                    <button onclick="scrollToApplication()" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-gray-900 px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-paper-plane mr-3 group-hover:scale-110 transition-transform duration-300"></i>Apply for Representation
+                    </button>
+                    <a href="#process" class="group glass-effect border-2 border-white/30 text-white px-12 py-5 rounded-2xl text-lg font-bold hover:bg-white/20 hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-info-circle mr-3 group-hover:scale-110 transition-transform duration-300"></i>Learn About the Process
+                    </a>
+                </div>
+                
+                <!-- Key Benefits -->
+                <div class="bg-white/20 backdrop-blur-sm rounded-3xl p-8 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-bold text-white mb-6">What Our Agents Provide</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-cricket-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-file-contract text-2xl text-gray-900"></i>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Contract Negotiation</h4>
+                            <p class="text-sm text-gray-200">Professional contract management and negotiation</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-cricket-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-star text-2xl text-gray-900"></i>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Sponsorship Deals</h4>
+                            <p class="text-sm text-gray-200">Secure lucrative sponsorship opportunities</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-cricket-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-chart-line text-2xl text-gray-900"></i>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Career Development</h4>
+                            <p class="text-sm text-gray-200">Strategic career planning and guidance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-32 bg-gradient-to-br from-white via-gray-50 to-blue-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    Our 
+                    <span class="gradient-text">Application Process</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    A rigorous selection process ensures only the most promising players are connected with our elite agent network
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cricket-blue to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <span class="text-white font-bold text-2xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Application Review</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Submit your detailed application with playing history, achievements, and career goals.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                            Playing statistics
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                            Achievement records
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                            Career objectives
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <span class="text-cricket-blue font-bold text-2xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Internal Assessment</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Our team reviews your application against strict criteria for professional potential.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Performance analysis
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Market potential
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Professional readiness
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cricket-green to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <span class="text-white font-bold text-2xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Agent Matching</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        If approved, we introduce you to 1-3 suitable agents from our vetted network.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Vetted agents only
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Personalized matching
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Warm introductions
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cricket-purple to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <span class="text-white font-bold text-2xl">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Professional Partnership</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Begin your professional relationship with your chosen agent for career advancement.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-purple mr-3"></i>
+                            Contract negotiation
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-purple mr-3"></i>
+                            Sponsorship deals
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-purple mr-3"></i>
+                            Career guidance
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Section -->
+    <section class="py-32 bg-gradient-to-br from-cricket-blue via-blue-700 to-cricket-purple text-white relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">
+                    Are You 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                        Eligible?
+                    </span>
+                </h2>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                    This service is reserved for elite players with demonstrable high potential and professional aspirations
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">Eligibility Criteria</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 mt-1"></i>
+                                <span>Currently playing at County Championship level or higher</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 mt-1"></i>
+                                <span>Demonstrated exceptional performance over multiple seasons</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 mt-1"></i>
+                                <span>Age 18+ with clear professional career aspirations</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 mt-1"></i>
+                                <span>Complete Scylla profile with verified statistics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 mt-1"></i>
+                                <span>Recommendation from current coach or county setup</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">What We Look For</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-cricket-gold rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-trophy text-cricket-blue text-sm"></i>
+                                </div>
+                                <span>Consistent high-level performance</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-cricket-gold rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-chart-line text-cricket-blue text-sm"></i>
+                                </div>
+                                <span>Clear upward trajectory</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-cricket-gold rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-users text-cricket-blue text-sm"></i>
+                                </div>
+                                <span>Professional attitude and conduct</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-cricket-gold rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-star text-cricket-blue text-sm"></i>
+                                </div>
+                                <span>Market potential and appeal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Our Agent Network</h3>
+                    <div class="space-y-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-shield-alt text-2xl text-cricket-blue"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Vetted & Credible</h4>
+                            <p class="text-sm text-gray-300">All agents undergo rigorous background checks and verification</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-handshake text-2xl text-cricket-blue"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Proven Track Record</h4>
+                            <p class="text-sm text-gray-300">Agents with successful histories of player representation</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-network-wired text-2xl text-cricket-blue"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Industry Connections</h4>
+                            <p class="text-sm text-gray-300">Established relationships with clubs, sponsors, and media</p>
+                        </div>
+                        
+                        <button onclick="scrollToApplication()" class="w-full bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-blue py-4 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-paper-plane mr-2"></i>Start Application
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Section -->
+    <section id="application" class="py-32 bg-gradient-to-br from-white via-gray-50 to-blue-50 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <div class="bg-white rounded-3xl shadow-2xl p-16 border border-gray-100">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    Ready to Take Your 
+                    <span class="gradient-text">Career to the Next Level?</span>
+                </h2>
+                <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Apply for professional representation and connect with our elite network of cricket agents.
+                </p>
+                
+                <!-- Important Notice -->
+                <div class="bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-blue rounded-xl p-6 mb-12 max-w-4xl mx-auto">
+                    <h4 class="font-bold text-lg mb-2">Important Notice</h4>
+                    <p class="text-sm">This is a highly selective application process. Only players meeting our strict eligibility criteria will be considered for agent matching. There is no upfront fee - our commercial arrangement is with the agent upon successful representation.</p>
+                </div>
+                
+                <button onclick="openApplicationModal()" class="group bg-gradient-to-r from-cricket-blue to-cricket-purple text-white px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center mb-8">
+                    <i class="fas fa-paper-plane mr-3 group-hover:scale-110 transition-transform duration-300"></i>Apply for Representation
+                </button>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap items-center justify-center gap-8 pt-8 border-t border-gray-200">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-shield-alt text-cricket-blue text-xl"></i>
+                        <span class="text-gray-600 font-medium">Vetted Agents Only</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-lock text-cricket-gold text-xl"></i>
+                        <span class="text-gray-600 font-medium">Confidential Process</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-handshake text-cricket-green text-xl"></i>
+                        <span class="text-gray-600 font-medium">No Upfront Fees</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-cricket-blue text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-5"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cricket-gold via-cricket-green to-cricket-purple"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-8 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold via-cricket-blue to-cricket-purple rounded-2xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-2xl"></i>
+                        </div>
+                        <span class="text-3xl font-black gradient-text">Scylla</span>
+                    </div>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed max-w-md">
+                        The premier platform connecting cricket talent with opportunities across the UK. Building the next generation of cricket stars.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-blue transition-all duration-300 group">
+                            <i class="fab fa-twitter text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-blue transition-all duration-300 group">
+                            <i class="fab fa-facebook text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-blue transition-all duration-300 group">
+                            <i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-blue transition-all duration-300 group">
+                            <i class="fab fa-linkedin text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">For Players</h3>
+                    <ul class="space-y-4">
+                        <li><a href="signup.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Create Profile
+                        </a></li>
+                        <li><a href="find-opportunities.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Find Opportunities
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Career Hub
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">Services</h3>
+                    <ul class="space-y-4">
+                        <li><a href="find-agent.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Find an Agent
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>All Services
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-16 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">&copy; 2024 Scylla. All rights reserved.</p>
+                    <div class="flex space-x-8 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">Apply for Professional Representation</h3>
+                <button onclick="closeApplicationModal()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-blue rounded-xl p-6 mb-8">
+                <h4 class="font-bold text-lg mb-2">Eligibility Reminder</h4>
+                <p class="text-sm">This application is for elite players at County Championship level or higher. Please ensure you meet our eligibility criteria before proceeding.</p>
+            </div>
+            
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Date of Birth</label>
+                        <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent" required>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                    <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Current Playing Level</label>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent" required>
+                        <option value="">Select your level</option>
+                        <option value="county-championship">County Championship</option>
+                        <option value="county-2nd-xi">County 2nd XI</option>
+                        <option value="minor-counties">Minor Counties</option>
+                        <option value="premier-league">Premier League</option>
+                        <option value="international">International</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Primary Role</label>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent" required>
+                        <option value="">Select your role</option>
+                        <option value="batsman">Batsman</option>
+                        <option value="bowler">Bowler</option>
+                        <option value="all-rounder">All-Rounder</option>
+                        <option value="wicket-keeper">Wicket-Keeper</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Playing Statistics (Last 3 Seasons)</label>
+                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent" rows="4" placeholder="Please provide your key statistics including runs, wickets, averages, etc. for the last 3 seasons..."></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Career Achievements & Highlights</label>
+                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent" rows="4" placeholder="List your major achievements, awards, notable performances, and career highlights..."></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Career Goals & Aspirations</label>
+                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent" rows="3" placeholder="Describe your professional cricket goals and what you hope to achieve with agent representation..."></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Current Coach/County Contact</label>
+                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent" placeholder="Name and contact details of your current coach or county representative">
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <h4 class="font-semibold text-gray-900 mb-4">Application Summary</h4>
+                    <div class="space-y-2 text-sm text-gray-600">
+                        <div class="flex justify-between">
+                            <span>Service:</span>
+                            <span class="font-semibold">Professional Agent Matching</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Fee:</span>
+                            <span class="font-semibold text-cricket-green">No Upfront Cost</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Process:</span>
+                            <span class="font-semibold">Application → Review → Matching</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-start space-x-3">
+                    <input type="checkbox" id="eligibility" class="mt-1 rounded focus:ring-2 focus:ring-cricket-blue" required>
+                    <label for="eligibility" class="text-sm text-gray-600">
+                        I confirm that I meet the eligibility criteria and am currently playing at County Championship level or higher. I understand this is a selective application process and there is no guarantee of acceptance.
+                    </label>
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-cricket-blue to-cricket-purple text-white py-4 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-paper-plane mr-2"></i>Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        function scrollToApplication() {
+            document.getElementById('application').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Application modal functions
+        function openApplicationModal() {
+            document.getElementById('applicationModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeApplicationModal() {
+            document.getElementById('applicationModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.getElementById('applicationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeApplicationModal();
+            }
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would integrate with your backend
+            alert('Thank you for your application! We will review your submission and contact you within 7-10 business days if you meet our criteria.');
+        });
+    </script>
+</body>
+</html>

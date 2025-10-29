@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scylla - The Home of UK's Next Cricket Generation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cricket-green': '#2D5016',
+                        'cricket-gold': '#D4AF37',
+                        'cricket-red': '#DC2626',
+                        'cricket-blue': '#1E40AF',
+                        'cricket-purple': '#7C3AED'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #2D5016 0%, #D4AF37 50%, #1E40AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cricket-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-green-50 to-blue-50 font-inter overflow-x-hidden">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center group">
+                    <div class="flex-shrink-0 flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cricket-green via-cricket-gold to-cricket-blue rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">Scylla</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="#home" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                        <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                        <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                        <a href="career-hub.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Career Hub</a>
+                        <a href="login.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                        <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-user-plus mr-2"></i>Sign Up
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button type="button" class="text-gray-700 hover:text-cricket-green focus:outline-none focus:text-cricket-green p-2 rounded-lg hover:bg-green-50 transition-all duration-300" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2 bg-white/95 backdrop-blur-md border-t border-gray-100">
+                <a href="#home" class="text-gray-900 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                <a href="career-hub.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Career Hub</a>
+                <a href="login.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white block px-4 py-3 rounded-xl text-base font-semibold hover:shadow-lg transition-all duration-300 text-center">
+                    <i class="fas fa-user-plus mr-2"></i>Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center bg-gradient-to-br from-cricket-green via-green-600 to-cricket-blue text-white overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-cricket-gold rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+        <div class="absolute top-40 right-10 w-96 h-96 bg-cricket-blue rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-cricket-purple rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 4s;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-10 animate-fade-in">
+                    <div class="space-y-6">
+                        <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight">
+                            The Home of UK's Next 
+                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                                Cricket Generation
+                            </span>
+                        </h1>
+                        <p class="text-xl md:text-2xl text-gray-100 leading-relaxed max-w-2xl">
+                            Build your professional cricket profile, showcase your skills, and get discovered by clubs, coaches, and scouts across the country.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6">
+                        <a href="signup.html" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-green px-10 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 text-center">
+                            <i class="fas fa-user-plus mr-3 group-hover:scale-110 transition-transform duration-300"></i>Create My Player Profile
+                        </a>
+                        <a href="find-talent.html" class="group glass-effect border-2 border-white/30 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/20 hover:scale-105 transition-all duration-300 text-center">
+                            <i class="fas fa-search mr-3 group-hover:scale-110 transition-transform duration-300"></i>Discover Talent
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="flex flex-wrap items-center gap-8 pt-8">
+                        <div class="flex items-center space-x-2">
+                            <div class="flex -space-x-2">
+                                <div class="w-8 h-8 bg-gradient-to-r from-cricket-gold to-yellow-400 rounded-full border-2 border-white"></div>
+                                <div class="w-8 h-8 bg-gradient-to-r from-cricket-blue to-blue-400 rounded-full border-2 border-white"></div>
+                                <div class="w-8 h-8 bg-gradient-to-r from-cricket-purple to-purple-400 rounded-full border-2 border-white"></div>
+                            </div>
+                            <span class="text-sm text-gray-200">500+ Active Players</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shield-alt text-cricket-gold"></i>
+                            <span class="text-sm text-gray-200">Verified Profiles</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-trophy text-cricket-gold"></i>
+                            <span class="text-sm text-gray-200">Elite Network</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative animate-slide-up">
+                    <!-- Main Stats Card -->
+                    <div class="glass-effect rounded-3xl p-10 shadow-2xl">
+                        <div class="text-center space-y-8">
+                            <div class="w-24 h-24 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto shadow-lg animate-pulse-slow">
+                                <i class="fas fa-cricket text-4xl text-cricket-green"></i>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-3xl font-bold mb-2">Join the Elite Network</h3>
+                                <p class="text-gray-200 text-lg">Connect with the UK's top cricket talent ecosystem</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-3 gap-6">
+                                <div class="text-center group">
+                                    <div class="text-4xl font-black text-cricket-gold mb-2 group-hover:scale-110 transition-transform duration-300">500+</div>
+                                    <div class="text-sm text-gray-300 font-medium">Active Players</div>
+                                </div>
+                                <div class="text-center group">
+                                    <div class="text-4xl font-black text-cricket-gold mb-2 group-hover:scale-110 transition-transform duration-300">150+</div>
+                                    <div class="text-sm text-gray-300 font-medium">Scouts</div>
+                                </div>
+                                <div class="text-center group">
+                                    <div class="text-4xl font-black text-cricket-gold mb-2 group-hover:scale-110 transition-transform duration-300">50+</div>
+                                    <div class="text-sm text-gray-300 font-medium">Clubs</div>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-4">
+                                <div class="flex items-center justify-center space-x-4 text-sm text-gray-300">
+                                    <span class="flex items-center">
+                                        <i class="fas fa-check-circle text-cricket-gold mr-2"></i>
+                                        Verified Profiles
+                                    </span>
+                                    <span class="flex items-center">
+                                        <i class="fas fa-star text-cricket-gold mr-2"></i>
+                                        Elite Network
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-cricket-gold to-yellow-400 rounded-full opacity-60 animate-bounce-slow"></div>
+                    <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-cricket-blue to-blue-400 rounded-full opacity-60 animate-bounce-slow" style="animation-delay: 1s;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-32 bg-gradient-to-br from-white via-gray-50 to-green-50 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 cricket-pattern opacity-5"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <div class="inline-block">
+                    <span class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2 rounded-full text-sm font-semibold mb-6 inline-block">
+                        How It Works
+                    </span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    Your Journey to 
+                    <span class="gradient-text">Cricket Stardom</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    A simple 3-step process to showcase your talent and get discovered by the UK's top cricket network
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Step 1 -->
+                <div class="group relative">
+                    <div class="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 border border-gray-100">
+                        <!-- Step Number -->
+                        <div class="absolute -top-6 left-10">
+                            <div class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shadow-lg">
+                                1
+                            </div>
+                        </div>
+                        
+                        <!-- Icon -->
+                        <div class="w-20 h-20 bg-gradient-to-br from-cricket-green to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="fas fa-id-card text-3xl text-white"></i>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Create Your Profile</h3>
+                        <p class="text-gray-600 text-center leading-relaxed mb-6">
+                            Build a dynamic digital CV with your stats, photos, and videos that showcase your cricketing abilities and personality.
+                        </p>
+                        
+                        <!-- Features List -->
+                        <ul class="space-y-3 text-sm text-gray-500">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                                Professional photo uploads
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                                Performance statistics
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                                Skills and achievements
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="group relative">
+                    <div class="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 border border-gray-100">
+                        <!-- Step Number -->
+                        <div class="absolute -top-6 left-10">
+                            <div class="bg-gradient-to-r from-cricket-gold to-yellow-500 text-cricket-green w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shadow-lg">
+                                2
+                            </div>
+                        </div>
+                        
+                        <!-- Icon -->
+                        <div class="w-20 h-20 bg-gradient-to-br from-cricket-gold to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="fas fa-play-circle text-3xl text-cricket-green"></i>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Showcase Your Skills</h3>
+                        <p class="text-gray-600 text-center leading-relaxed mb-6">
+                            Upload clips of your best performances to bring your talent to life and demonstrate your capabilities to scouts.
+                        </p>
+                        
+                        <!-- Features List -->
+                        <ul class="space-y-3 text-sm text-gray-500">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                                Video highlight reels
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                                Match performance clips
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                                Training session footage
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="group relative">
+                    <div class="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 border border-gray-100">
+                        <!-- Step Number -->
+                        <div class="absolute -top-6 left-10">
+                            <div class="bg-gradient-to-r from-cricket-blue to-cricket-purple text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shadow-lg">
+                                3
+                            </div>
+                        </div>
+                        
+                        <!-- Icon -->
+                        <div class="w-20 h-20 bg-gradient-to-br from-cricket-blue to-cricket-purple rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="fas fa-search text-3xl text-white"></i>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Get Discovered</h3>
+                        <p class="text-gray-600 text-center leading-relaxed mb-6">
+                            Be seen by a network of registered scouts, coaches, and academies looking for the next cricket star.
+                        </p>
+                        
+                        <!-- Features List -->
+                        <ul class="space-y-3 text-sm text-gray-500">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                                Elite scout network
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                                Club opportunities
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-blue mr-3"></i>
+                                Academy partnerships
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Connection Lines -->
+            <div class="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-cricket-green via-cricket-gold to-cricket-blue opacity-30 -translate-y-1/2 z-0"></div>
+        </div>
+    </section>
+
+    <!-- Featured Talents Section -->
+    <section class="py-32 bg-gradient-to-br from-gray-50 via-white to-green-50 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-20 right-20 w-64 h-64 bg-cricket-gold rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float"></div>
+        <div class="absolute bottom-20 left-20 w-80 h-80 bg-cricket-blue rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float" style="animation-delay: 3s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <div class="inline-block">
+                    <span class="bg-gradient-to-r from-cricket-gold to-yellow-500 text-cricket-green px-6 py-2 rounded-full text-sm font-semibold mb-6 inline-block">
+                        Featured Talents
+                    </span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    Meet the Next 
+                    <span class="gradient-text">Cricket Stars</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Discover some of the most promising young cricketers already making waves on our platform
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Player Card 1 -->
+                <div class="group bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="h-64 bg-gradient-to-br from-cricket-green via-green-600 to-cricket-blue flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="relative z-10 text-center">
+                            <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-user text-4xl text-white"></i>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-cricket-gold text-cricket-green px-3 py-1 rounded-full text-xs font-bold">FEATURED</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">James Mitchell</h3>
+                        <p class="text-gray-600 mb-3 text-lg">18 years • Surrey</p>
+                        <p class="text-cricket-green font-semibold mb-6 text-lg">RHB | Right-Arm Fast</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-gradient-to-r from-cricket-green to-green-600 text-white px-4 py-2 rounded-full text-sm font-medium">Power Hitter</span>
+                            <span class="bg-gradient-to-r from-gray-200 to-gray-300 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">Yorker Expert</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="text-center p-3 bg-gray-50 rounded-xl">
+                                <div class="text-lg font-bold text-cricket-green">45.2</div>
+                                <div class="text-xs text-gray-600">Batting Avg</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-xl">
+                                <div class="text-lg font-bold text-cricket-green">18.7</div>
+                                <div class="text-xs text-gray-600">Bowling Avg</div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-gradient-to-r from-cricket-green to-cricket-blue text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            View Profile
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Player Card 2 -->
+                <div class="group bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="h-64 bg-gradient-to-br from-cricket-gold via-yellow-500 to-orange-500 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="relative z-10 text-center">
+                            <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-user text-4xl text-white"></i>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-cricket-blue text-white px-3 py-1 rounded-full text-xs font-bold">RISING</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Sarah Williams</h3>
+                        <p class="text-gray-600 mb-3 text-lg">17 years • Yorkshire</p>
+                        <p class="text-cricket-gold font-semibold mb-6 text-lg">LHB | Left-Arm Orthodox</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-gradient-to-r from-cricket-gold to-yellow-500 text-cricket-green px-4 py-2 rounded-full text-sm font-medium">Agile Fielder</span>
+                            <span class="bg-gradient-to-r from-gray-200 to-gray-300 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">Spin Specialist</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="text-center p-3 bg-gray-50 rounded-xl">
+                                <div class="text-lg font-bold text-cricket-gold">38.9</div>
+                                <div class="text-xs text-gray-600">Batting Avg</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-xl">
+                                <div class="text-lg font-bold text-cricket-gold">22.1</div>
+                                <div class="text-xs text-gray-600">Bowling Avg</div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-gradient-to-r from-cricket-gold to-yellow-500 text-cricket-green py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            View Profile
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Player Card 3 -->
+                <div class="group bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="h-64 bg-gradient-to-br from-cricket-blue via-blue-600 to-cricket-purple flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="relative z-10 text-center">
+                            <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-user text-4xl text-white"></i>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-cricket-purple text-white px-3 py-1 rounded-full text-xs font-bold">ELITE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Alex Thompson</h3>
+                        <p class="text-gray-600 mb-3 text-lg">19 years • Lancashire</p>
+                        <p class="text-cricket-blue font-semibold mb-6 text-lg">RHB | Wicket-Keeper</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-gradient-to-r from-cricket-blue to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">Quick Hands</span>
+                            <span class="bg-gradient-to-r from-gray-200 to-gray-300 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">Finisher</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="text-center p-3 bg-gray-50 rounded-xl">
+                                <div class="text-lg font-bold text-cricket-blue">52.3</div>
+                                <div class="text-xs text-gray-600">Batting Avg</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-xl">
+                                <div class="text-lg font-bold text-cricket-blue">12</div>
+                                <div class="text-xs text-gray-600">Stumpings</div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-gradient-to-r from-cricket-blue to-cricket-purple text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            View Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="find-talent.html" class="group bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-12 py-4 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center">
+                    <span>View All Talents</span>
+                    <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-32 bg-gradient-to-br from-cricket-green via-green-700 to-cricket-blue text-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        <div class="absolute top-10 left-10 w-96 h-96 bg-cricket-gold rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-cricket-purple rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">
+                    Platform 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                        Statistics
+                    </span>
+                </h2>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                    Growing community of cricket talent and opportunity across the UK
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center group">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/20 transition-all duration-300 group-hover:scale-105">
+                        <div class="text-5xl md:text-6xl font-black text-cricket-gold mb-4 group-hover:scale-110 transition-transform duration-300">500+</div>
+                        <div class="text-lg text-gray-200 font-semibold">Active Players</div>
+                        <div class="text-sm text-gray-300 mt-2">Growing daily</div>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/20 transition-all duration-300 group-hover:scale-105">
+                        <div class="text-5xl md:text-6xl font-black text-cricket-gold mb-4 group-hover:scale-110 transition-transform duration-300">150+</div>
+                        <div class="text-lg text-gray-200 font-semibold">Registered Scouts</div>
+                        <div class="text-sm text-gray-300 mt-2">Elite network</div>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/20 transition-all duration-300 group-hover:scale-105">
+                        <div class="text-5xl md:text-6xl font-black text-cricket-gold mb-4 group-hover:scale-110 transition-transform duration-300">50+</div>
+                        <div class="text-lg text-gray-200 font-semibold">Partner Clubs</div>
+                        <div class="text-sm text-gray-300 mt-2">Top tier</div>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/20 transition-all duration-300 group-hover:scale-105">
+                        <div class="text-5xl md:text-6xl font-black text-cricket-gold mb-4 group-hover:scale-110 transition-transform duration-300">25+</div>
+                        <div class="text-lg text-gray-200 font-semibold">Counties Covered</div>
+                        <div class="text-sm text-gray-300 mt-2">Nationwide</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-32 bg-gradient-to-br from-white via-gray-50 to-green-50 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-20 left-20 w-64 h-64 bg-cricket-gold rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float"></div>
+        <div class="absolute bottom-20 right-20 w-80 h-80 bg-cricket-blue rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float" style="animation-delay: 3s;"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <div class="bg-white rounded-3xl shadow-2xl p-16 border border-gray-100">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    Ready to Showcase 
+                    <span class="gradient-text">Your Talent?</span>
+                </h2>
+                <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Join the UK's premier cricket talent marketplace and get discovered by scouts, coaches, and clubs across the country.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="signup.html" class="group bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-user-plus mr-3 group-hover:scale-110 transition-transform duration-300"></i>Get Started Free
+                    </a>
+                    <a href="find-talent.html" class="group glass-effect border-2 border-cricket-green text-cricket-green px-12 py-5 rounded-2xl text-lg font-bold hover:bg-cricket-green hover:text-white hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-search mr-3 group-hover:scale-110 transition-transform duration-300"></i>Find Talent
+                    </a>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap items-center justify-center gap-8 mt-12 pt-8 border-t border-gray-200">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-shield-alt text-cricket-green text-xl"></i>
+                        <span class="text-gray-600 font-medium">100% Secure</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-clock text-cricket-gold text-xl"></i>
+                        <span class="text-gray-600 font-medium">Quick Setup</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-users text-cricket-blue text-xl"></i>
+                        <span class="text-gray-600 font-medium">Elite Network</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-cricket-green text-white py-20 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 cricket-pattern opacity-5"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cricket-gold via-cricket-blue to-cricket-purple"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-8 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold via-cricket-blue to-cricket-purple rounded-2xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-2xl"></i>
+                        </div>
+                        <span class="text-3xl font-black gradient-text">Scylla</span>
+                    </div>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed max-w-md">
+                        The premier platform connecting cricket talent with opportunities across the UK. Building the next generation of cricket stars.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-twitter text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-facebook text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-linkedin text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">For Players</h3>
+                    <ul class="space-y-4">
+                        <li><a href="signup.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Create Profile
+                        </a></li>
+                        <li><a href="find-opportunities.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Find Opportunities
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Career Hub
+                        </a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Pricing
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">For Scouts</h3>
+                    <ul class="space-y-4">
+                        <li><a href="find-talent.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Find Talent
+                        </a></li>
+                        <li><a href="signup.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Scout Registration
+                        </a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Analytics Tools
+                        </a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Subscription
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-16 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">&copy; 2024 Scylla. All rights reserved.</p>
+                    <div class="flex space-x-8 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for mobile menu -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

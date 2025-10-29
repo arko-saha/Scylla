@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Find Opportunities - Scylla</title>
+    <meta name="description" content="Discover cricket opportunities across the UK. Find trials, scholarships, coaching positions, and career opportunities on the Scylla platform.">
+    <!-- Updated: Functional search and filtering - v2.0 -->
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cricket-green': '#2D5016',
+                        'cricket-gold': '#D4AF37',
+                        'cricket-red': '#DC2626',
+                        'cricket-blue': '#1E40AF',
+                        'cricket-purple': '#7C3AED'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #2D5016 0%, #D4AF37 50%, #1E40AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cricket-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-gray-50 to-green-50 font-inter overflow-x-hidden">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center group">
+                    <div class="flex-shrink-0 flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cricket-green via-cricket-gold to-cricket-blue rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">Scylla</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="index.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                        <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                        <a href="find-opportunities.html" class="text-cricket-green bg-green-50 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300">Find Opportunities</a>
+                        <a href="career-hub.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Career Hub</a>
+                        <a href="login.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                        <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-user-plus mr-2"></i>Sign Up
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button type="button" class="text-gray-700 hover:text-cricket-green focus:outline-none focus:text-cricket-green p-2 rounded-lg hover:bg-green-50 transition-all duration-300" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2 bg-white/95 backdrop-blur-md border-t border-gray-100">
+                <a href="index.html" class="text-gray-900 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                <a href="find-opportunities.html" class="text-cricket-green bg-green-50 block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300">Find Opportunities</a>
+                <a href="career-hub.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Career Hub</a>
+                <a href="login.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white block px-4 py-3 rounded-xl text-base font-semibold hover:shadow-lg transition-all duration-300 text-center">
+                    <i class="fas fa-user-plus mr-2"></i>Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-br from-cricket-blue via-blue-600 to-cricket-purple text-white overflow-hidden pt-20">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-cricket-gold rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+        <div class="absolute top-40 right-10 w-96 h-96 bg-cricket-green rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div class="text-center">
+                <div class="inline-block mb-8">
+                    <span class="bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-blue px-8 py-3 rounded-full text-lg font-bold shadow-lg">
+                        <i class="fas fa-briefcase mr-2"></i>Opportunity Hub
+                    </span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-8">
+                    Discover Your 
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                        Next Opportunity
+                    </span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-100 leading-relaxed max-w-4xl mx-auto mb-12">
+                    Find trials, scholarships, coaching positions, and career opportunities across the UK cricket landscape.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+                    <button onclick="scrollToSearch()" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-blue px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-search mr-3 group-hover:scale-110 transition-transform duration-300"></i>Browse Opportunities
+                    </button>
+                    <a href="#features" class="group glass-effect border-2 border-white/30 text-white px-12 py-5 rounded-2xl text-lg font-bold hover:bg-white/20 hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-info-circle mr-3 group-hover:scale-110 transition-transform duration-300"></i>Learn More
+                    </a>
+                </div>
+                
+                <!-- Key Stats -->
+                <div class="bg-white/20 backdrop-blur-sm rounded-3xl p-8 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-bold text-white mb-6">Platform Statistics</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-cricket-gold mb-2">200+</div>
+                            <div class="text-sm text-gray-200">Active Opportunities</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-cricket-gold mb-2">50+</div>
+                            <div class="text-sm text-gray-200">Partner Clubs</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-cricket-gold mb-2">25+</div>
+                            <div class="text-sm text-gray-200">Scholarship Programs</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-cricket-gold mb-2">15+</div>
+                            <div class="text-sm text-gray-200">Coaching Positions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Filter Section -->
+    <section id="search" class="py-32 bg-gradient-to-br from-white via-gray-50 to-blue-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    Find Your 
+                    <span class="gradient-text">Perfect Match</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Discover opportunities that align with your skills, location, and career goals
+                </p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="bg-white rounded-3xl shadow-2xl p-8 mb-12">
+                <form id="search-form" class="flex flex-col lg:flex-row gap-6">
+                    <div class="flex-1">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Search Opportunities</label>
+                        <div class="relative">
+                            <input type="text" id="search-input" placeholder="Search by role, club, or location..." class="w-full px-6 py-4 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent text-lg">
+                            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                    </div>
+                    <div class="lg:w-64">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Opportunity Type</label>
+                        <select id="type-filter" class="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent">
+                            <option value="">All Types</option>
+                            <option value="trials">Trials</option>
+                            <option value="scholarships">Scholarships</option>
+                            <option value="coaching">Coaching Positions</option>
+                            <option value="academy">Academy Programs</option>
+                        </select>
+                    </div>
+                    <div class="lg:w-48">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                        <select id="location-filter" class="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent">
+                            <option value="">All Locations</option>
+                            <option value="london">London</option>
+                            <option value="birmingham">Birmingham</option>
+                            <option value="manchester">Manchester</option>
+                            <option value="leeds">Leeds</option>
+                            <option value="bristol">Bristol</option>
+                        </select>
+                    </div>
+                    <div class="lg:w-48">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Level</label>
+                        <select id="level-filter" class="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent">
+                            <option value="">All Levels</option>
+                            <option value="grassroots">Grassroots</option>
+                            <option value="county">County</option>
+                            <option value="professional">Professional</option>
+                            <option value="international">International</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="mt-6 flex flex-wrap gap-3">
+                    <button type="button" onclick="searchOpportunities()" class="bg-gradient-to-r from-cricket-blue to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-search mr-2"></i>Search Opportunities
+                    </button>
+                    <button type="button" onclick="toggleAdvancedFilters()" class="border-2 border-cricket-blue text-cricket-blue px-8 py-3 rounded-xl font-semibold hover:bg-cricket-blue hover:text-white transition-all duration-300">
+                        <i class="fas fa-filter mr-2"></i>Advanced Filters
+                    </button>
+                    <button type="button" onclick="clearFilters()" class="border-2 border-gray-300 text-gray-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300">
+                        <i class="fas fa-undo mr-2"></i>Clear All
+                        </button>
+                </div>
+                
+                <!-- Advanced Filters Panel -->
+                <div id="advanced-filters" class="mt-8 p-6 bg-gray-50 rounded-2xl hidden">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Advanced Filters</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Age Range</label>
+                            <select id="age-filter" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent">
+                                <option value="">All Ages</option>
+                                <option value="16-18">16-18</option>
+                                <option value="19-21">19-21</option>
+                                <option value="22-25">22-25</option>
+                                <option value="26+">26+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Experience Required</label>
+                            <select id="experience-filter" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent">
+                                <option value="">Any Experience</option>
+                                <option value="0-1">0-1 years</option>
+                                <option value="2-3">2-3 years</option>
+                                <option value="4-5">4-5 years</option>
+                                <option value="5+">5+ years</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                            <select id="status-filter" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cricket-blue focus:border-transparent">
+                                <option value="">All Status</option>
+                                <option value="open">Open</option>
+                                <option value="closing-soon">Closing Soon</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-32 bg-gradient-to-br from-cricket-blue via-blue-700 to-cricket-purple text-white relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">
+                    Discover 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                        Amazing Opportunities
+                    </span>
+                </h2>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                    From trials to scholarships, find the perfect opportunity to advance your cricket career
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="group bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/20 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-trophy text-2xl text-cricket-blue"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Trials & Tryouts</h3>
+                    <p class="text-gray-200 text-center leading-relaxed">
+                        Find trials with county clubs, academies, and professional teams looking for new talent.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="group bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/20 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-graduation-cap text-2xl text-cricket-blue"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Scholarships</h3>
+                    <p class="text-gray-200 text-center leading-relaxed">
+                        Discover educational scholarships and academy programs that combine cricket with academics.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="group bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/20 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-chalkboard-teacher text-2xl text-cricket-blue"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Coaching Roles</h3>
+                    <p class="text-gray-200 text-center leading-relaxed">
+                        Explore coaching positions and development roles within cricket clubs and academies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results Section -->
+    <section id="search-results" class="py-32 bg-gradient-to-br from-white via-gray-50 to-blue-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    <span id="results-title">Featured</span> 
+                    <span class="gradient-text">Opportunities</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" id="results-subtitle">
+                    Discover some of the most exciting opportunities available on our platform
+                </p>
+                <div id="results-count" class="mt-4 text-lg text-cricket-blue font-semibold hidden">
+                    <span id="count-number">0</span> opportunities found
+                </div>
+            </div>
+            
+            <!-- Loading State -->
+            <div id="loading-state" class="text-center py-20 hidden">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-cricket-blue"></div>
+                <p class="mt-4 text-gray-600">Searching for opportunities...</p>
+            </div>
+            
+            <!-- No Results State -->
+            <div id="no-results" class="text-center py-20 hidden">
+                <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-search text-3xl text-gray-400"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">No opportunities found</h3>
+                <p class="text-gray-600 mb-8">Try adjusting your search criteria or filters</p>
+                <button onclick="clearFilters()" class="bg-gradient-to-r from-cricket-blue to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-undo mr-2"></i>Clear Filters
+                </button>
+            </div>
+
+            <!-- Search Results Grid -->
+            <div id="search-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Opportunity Card 1 -->
+                <div class="group bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative h-48 bg-gradient-to-br from-cricket-green to-green-600">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-cricket-gold text-cricket-green px-3 py-1 rounded-full text-sm font-bold">Trial</span>
+                                </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-2xl font-bold">Surrey County Trials</h3>
+                            <p class="text-gray-200">U19 Development Squad</p>
+                                    </div>
+                                </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-map-marker-alt text-cricket-blue"></i>
+                                <span class="text-sm text-gray-600">London, Surrey</span>
+                                    </div>
+                            <span class="text-cricket-green font-bold">Open</span>
+                                    </div>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Deadline:</span>
+                                <span class="font-semibold">March 15, 2024</span>
+                                    </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Age Range:</span>
+                                <span class="font-semibold">16-19 years</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Level:</span>
+                                <span class="text-cricket-blue font-semibold">County</span>
+                            </div>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-gradient-to-r from-cricket-green to-green-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                                <i class="fas fa-eye mr-2"></i>View Details
+                            </button>
+                            <button class="px-4 py-3 border-2 border-cricket-green text-cricket-green rounded-xl hover:bg-cricket-green hover:text-white transition-all duration-300">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opportunity Card 2 -->
+                <div class="group bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative h-48 bg-gradient-to-br from-cricket-blue to-blue-600">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-cricket-gold text-cricket-blue px-3 py-1 rounded-full text-sm font-bold">Scholarship</span>
+                                </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-2xl font-bold">Loughborough Academy</h3>
+                            <p class="text-gray-200">Cricket & Education Program</p>
+                                    </div>
+                                </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-map-marker-alt text-cricket-blue"></i>
+                                <span class="text-sm text-gray-600">Loughborough</span>
+                                    </div>
+                            <span class="text-cricket-green font-bold">Open</span>
+                                    </div>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Deadline:</span>
+                                <span class="font-semibold">April 30, 2024</span>
+                                    </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Age Range:</span>
+                                <span class="font-semibold">17-21 years</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Level:</span>
+                                <span class="text-cricket-blue font-semibold">Academy</span>
+                            </div>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-gradient-to-r from-cricket-blue to-blue-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                                <i class="fas fa-eye mr-2"></i>View Details
+                            </button>
+                            <button class="px-4 py-3 border-2 border-cricket-blue text-cricket-blue rounded-xl hover:bg-cricket-blue hover:text-white transition-all duration-300">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opportunity Card 3 -->
+                <div class="group bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative h-48 bg-gradient-to-br from-cricket-purple to-purple-600">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-cricket-gold text-cricket-purple px-3 py-1 rounded-full text-sm font-bold">Coaching</span>
+                                </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-2xl font-bold">Youth Coach Position</h3>
+                            <p class="text-gray-200">Middlesex Cricket Club</p>
+                                    </div>
+                                </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-map-marker-alt text-cricket-blue"></i>
+                                <span class="text-sm text-gray-600">London</span>
+                                    </div>
+                            <span class="text-cricket-green font-bold">Open</span>
+                                    </div>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Deadline:</span>
+                                <span class="font-semibold">March 30, 2024</span>
+                                    </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Experience:</span>
+                                <span class="font-semibold">2+ years</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Level:</span>
+                                <span class="text-cricket-purple font-semibold">Grassroots</span>
+                            </div>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-gradient-to-r from-cricket-purple to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                                <i class="fas fa-eye mr-2"></i>View Details
+                            </button>
+                            <button class="px-4 py-3 border-2 border-cricket-purple text-cricket-purple rounded-xl hover:bg-cricket-purple hover:text-white transition-all duration-300">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-gradient-to-r from-cricket-blue to-blue-600 text-white px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                    <i class="fas fa-search mr-3"></i>View All Opportunities
+                    </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-32 bg-gradient-to-br from-cricket-purple via-purple-700 to-cricket-green text-white relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <h2 class="text-4xl md:text-6xl font-black mb-6">
+                Ready to Find Your 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                    Next Opportunity?
+                </span>
+            </h2>
+            <p class="text-xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+                Join thousands of players who have found their perfect opportunity through Scylla.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="signup.html" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-purple px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                    <i class="fas fa-user-plus mr-3 group-hover:scale-110 transition-transform duration-300"></i>Start Your Journey
+                </a>
+                <a href="career-hub.html" class="group glass-effect border-2 border-white/30 text-white px-12 py-5 rounded-2xl text-lg font-bold hover:bg-white/20 hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                    <i class="fas fa-info-circle mr-3 group-hover:scale-110 transition-transform duration-300"></i>Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-cricket-blue text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-5"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cricket-gold via-cricket-blue to-cricket-purple"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-8 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold via-cricket-green to-cricket-blue rounded-2xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-2xl"></i>
+                        </div>
+                        <span class="text-3xl font-black gradient-text">Scylla</span>
+                    </div>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed max-w-md">
+                        The premier platform connecting cricket talent with opportunities across the UK. Building the next generation of cricket stars.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-twitter text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-facebook text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-cricket-green transition-all duration-300 group">
+                            <i class="fab fa-linkedin text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">For Scouts</h3>
+                    <ul class="space-y-4">
+                        <li><a href="find-talent.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Find Talent
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Career Hub
+                        </a></li>
+                        <li><a href="signup.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Sign Up
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">For Players</h3>
+                    <ul class="space-y-4">
+                        <li><a href="find-opportunities.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Find Opportunities
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Career Hub
+                        </a></li>
+                        <li><a href="signup.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Sign Up
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-16 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">&copy; 2024 Scylla. All rights reserved.</p>
+                    <div class="flex space-x-8 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Sample opportunities data
+        const opportunitiesData = [
+            {
+                id: 1,
+                title: "Surrey County Trials",
+                subtitle: "U19 Development Squad",
+                type: "trials",
+                location: "london",
+                level: "county",
+                ageRange: "16-19",
+                experience: "2-3",
+                status: "open",
+                deadline: "March 15, 2024",
+                gradient: "from-cricket-green to-green-600",
+                badge: "Trial"
+            },
+            {
+                id: 2,
+                title: "Loughborough Academy",
+                subtitle: "Cricket & Education Program",
+                type: "scholarships",
+                location: "loughborough",
+                level: "academy",
+                ageRange: "17-21",
+                experience: "0-1",
+                status: "open",
+                deadline: "April 30, 2024",
+                gradient: "from-cricket-blue to-blue-600",
+                badge: "Scholarship"
+            },
+            {
+                id: 3,
+                title: "Youth Coach Position",
+                subtitle: "Middlesex Cricket Club",
+                type: "coaching",
+                location: "london",
+                level: "grassroots",
+                ageRange: "22+",
+                experience: "2-3",
+                status: "closing-soon",
+                deadline: "March 30, 2024",
+                gradient: "from-cricket-purple to-purple-600",
+                badge: "Coaching"
+            },
+            {
+                id: 4,
+                title: "Birmingham Academy Program",
+                subtitle: "Elite Development Pathway",
+                type: "academy",
+                location: "birmingham",
+                level: "county",
+                ageRange: "16-20",
+                experience: "1-2",
+                status: "urgent",
+                deadline: "March 10, 2024",
+                gradient: "from-cricket-red to-red-600",
+                badge: "Academy"
+            },
+            {
+                id: 5,
+                title: "Manchester United Trials",
+                subtitle: "Professional Development",
+                type: "trials",
+                location: "manchester",
+                level: "professional",
+                ageRange: "18-25",
+                experience: "3-5",
+                status: "open",
+                deadline: "April 15, 2024",
+                gradient: "from-cricket-green to-green-700",
+                badge: "Pro Trial"
+            },
+            {
+                id: 6,
+                title: "Leeds Coaching Scholarship",
+                subtitle: "Coaching Education Program",
+                type: "scholarships",
+                location: "leeds",
+                level: "grassroots",
+                ageRange: "18-30",
+                experience: "0-1",
+                status: "open",
+                deadline: "May 1, 2024",
+                gradient: "from-cricket-blue to-blue-500",
+                badge: "Education"
+            }
+        ];
+
+        let filteredOpportunities = [...opportunitiesData];
+        let isSearching = false;
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        function scrollToSearch() {
+            document.getElementById('search').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Toggle advanced filters
+        function toggleAdvancedFilters() {
+            const advancedFilters = document.getElementById('advanced-filters');
+            advancedFilters.classList.toggle('hidden');
+        }
+
+        // Clear all filters
+        function clearFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('type-filter').value = '';
+            document.getElementById('location-filter').value = '';
+            document.getElementById('level-filter').value = '';
+            document.getElementById('age-filter').value = '';
+            document.getElementById('experience-filter').value = '';
+            document.getElementById('status-filter').value = '';
+            
+            // Reset to show all opportunities
+            filteredOpportunities = [...opportunitiesData];
+            displayOpportunities();
+            updateResultsUI();
+        }
+
+        // Search opportunities function
+        function searchOpportunities() {
+            if (isSearching) return;
+            
+            isSearching = true;
+            showLoadingState();
+            
+            // Simulate API delay
+            setTimeout(() => {
+                const searchTerm = document.getElementById('search-input').value.toLowerCase();
+                const type = document.getElementById('type-filter').value;
+                const location = document.getElementById('location-filter').value;
+                const level = document.getElementById('level-filter').value;
+                const ageRange = document.getElementById('age-filter').value;
+                const experience = document.getElementById('experience-filter').value;
+                const status = document.getElementById('status-filter').value;
+                
+                // Filter opportunities
+                filteredOpportunities = opportunitiesData.filter(opportunity => {
+                    // Text search
+                    const matchesSearch = !searchTerm || 
+                        opportunity.title.toLowerCase().includes(searchTerm) ||
+                        opportunity.subtitle.toLowerCase().includes(searchTerm) ||
+                        opportunity.location.toLowerCase().includes(searchTerm);
+                    
+                    // Type filter
+                    const matchesType = !type || opportunity.type === type;
+                    
+                    // Location filter
+                    const matchesLocation = !location || opportunity.location === location;
+                    
+                    // Level filter
+                    const matchesLevel = !level || opportunity.level === level;
+                    
+                    // Age range filter
+                    const matchesAge = !ageRange || checkAgeRange(opportunity.ageRange, ageRange);
+                    
+                    // Experience filter
+                    const matchesExperience = !experience || opportunity.experience === experience;
+                    
+                    // Status filter
+                    const matchesStatus = !status || opportunity.status === status;
+                    
+                    return matchesSearch && matchesType && matchesLocation && matchesLevel && 
+                           matchesAge && matchesExperience && matchesStatus;
+                });
+                
+                hideLoadingState();
+                displayOpportunities();
+                updateResultsUI();
+                isSearching = false;
+            }, 1000);
+        }
+
+        // Check if age range matches filter
+        function checkAgeRange(opportunityAgeRange, filterRange) {
+            const opportunityAges = opportunityAgeRange.split('-').map(Number);
+            const filterAges = filterRange.split('-').map(Number);
+            
+            if (filterRange === '26+') {
+                return opportunityAges[0] >= 26;
+            }
+            
+            return opportunityAges[0] <= filterAges[1] && opportunityAges[1] >= filterAges[0];
+        }
+
+        // Show loading state
+        function showLoadingState() {
+            document.getElementById('loading-state').classList.remove('hidden');
+            document.getElementById('search-results-grid').classList.add('hidden');
+            document.getElementById('no-results').classList.add('hidden');
+        }
+
+        // Hide loading state
+        function hideLoadingState() {
+            document.getElementById('loading-state').classList.add('hidden');
+        }
+
+        // Update results UI
+        function updateResultsUI() {
+            const resultsTitle = document.getElementById('results-title');
+            const resultsSubtitle = document.getElementById('results-subtitle');
+            const resultsCount = document.getElementById('results-count');
+            const countNumber = document.getElementById('count-number');
+            
+            if (filteredOpportunities.length === 0) {
+                document.getElementById('no-results').classList.remove('hidden');
+                document.getElementById('search-results-grid').classList.add('hidden');
+                resultsTitle.textContent = 'No Results';
+                resultsSubtitle.textContent = 'Try adjusting your search criteria';
+                resultsCount.classList.add('hidden');
+            } else {
+                document.getElementById('no-results').classList.add('hidden');
+                document.getElementById('search-results-grid').classList.remove('hidden');
+                resultsTitle.textContent = filteredOpportunities.length === opportunitiesData.length ? 'Featured' : 'Search Results';
+                resultsSubtitle.textContent = filteredOpportunities.length === opportunitiesData.length ? 
+                    'Discover some of the most exciting opportunities available on our platform' : 
+                    'Opportunities matching your search criteria';
+                resultsCount.classList.remove('hidden');
+                countNumber.textContent = filteredOpportunities.length;
+            }
+        }
+
+        // Display opportunities
+        function displayOpportunities() {
+            const grid = document.getElementById('search-results-grid');
+            grid.innerHTML = '';
+            
+            filteredOpportunities.forEach(opportunity => {
+                const opportunityCard = createOpportunityCard(opportunity);
+                grid.appendChild(opportunityCard);
+            });
+        }
+
+        // Create opportunity card element
+        function createOpportunityCard(opportunity) {
+            const card = document.createElement('div');
+            card.className = 'group bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2';
+            
+            const statusColor = opportunity.status === 'urgent' ? 'text-red-600' : 
+                               opportunity.status === 'closing-soon' ? 'text-orange-600' : 'text-cricket-green';
+            
+            card.innerHTML = `
+                <div class="relative h-48 bg-gradient-to-br ${opportunity.gradient}">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-cricket-gold text-${opportunity.gradient.includes('green') ? 'cricket-green' : opportunity.gradient.includes('blue') ? 'cricket-blue' : 'cricket-purple'} px-3 py-1 rounded-full text-sm font-bold">${opportunity.badge}</span>
+                    </div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="text-2xl font-bold">${opportunity.title}</h3>
+                        <p class="text-gray-200">${opportunity.subtitle}</p>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt text-cricket-blue"></i>
+                            <span class="text-sm text-gray-600">${opportunity.location.charAt(0).toUpperCase() + opportunity.location.slice(1)}</span>
+                        </div>
+                        <span class="${statusColor} font-bold">${opportunity.status.charAt(0).toUpperCase() + opportunity.status.slice(1).replace('-', ' ')}</span>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Deadline:</span>
+                            <span class="font-semibold">${opportunity.deadline}</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Age Range:</span>
+                            <span class="font-semibold">${opportunity.ageRange} years</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Level:</span>
+                            <span class="text-cricket-blue font-semibold">${opportunity.level.charAt(0).toUpperCase() + opportunity.level.slice(1)}</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-3">
+                        <button class="flex-1 bg-gradient-to-r ${opportunity.gradient} text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-eye mr-2"></i>View Details
+                        </button>
+                        <button class="px-4 py-3 border-2 border-${opportunity.gradient.includes('green') ? 'cricket-green' : opportunity.gradient.includes('blue') ? 'cricket-blue' : 'cricket-purple'} text-${opportunity.gradient.includes('green') ? 'cricket-green' : opportunity.gradient.includes('blue') ? 'cricket-blue' : 'cricket-purple'} rounded-xl hover:bg-${opportunity.gradient.includes('green') ? 'cricket-green' : opportunity.gradient.includes('blue') ? 'cricket-blue' : 'cricket-purple'} hover:text-white transition-all duration-300">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Event listeners
+        document.getElementById('search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchOpportunities();
+            }
+        });
+
+        // Auto-search on filter change
+        document.querySelectorAll('#type-filter, #location-filter, #level-filter, #age-filter, #experience-filter, #status-filter').forEach(filter => {
+            filter.addEventListener('change', searchOpportunities);
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayOpportunities();
+        });
+    </script>
+</body>
+</html>

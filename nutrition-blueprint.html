@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Day Nutrition Blueprint - Scylla</title>
+    <meta name="description" content="Fuel your performance like a pro. A sports nutritionist will create a personalized blueprint for what to eat before, during, and after a match to maximize energy and recovery.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cricket-green': '#2D5016',
+                        'cricket-gold': '#D4AF37',
+                        'cricket-red': '#DC2626',
+                        'cricket-blue': '#1E40AF',
+                        'cricket-purple': '#7C3AED'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #2D5016 0%, #D4AF37 50%, #1E40AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cricket-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-gray-50 to-orange-50 font-inter overflow-x-hidden">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center group">
+                    <div class="flex-shrink-0 flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cricket-green via-cricket-gold to-cricket-blue rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">Scylla</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="index.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                        <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                        <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                        <a href="career-hub.html" class="text-cricket-green bg-green-50 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                        <a href="login.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                        <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-user-plus mr-2"></i>Sign Up
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button type="button" class="text-gray-700 hover:text-cricket-green focus:outline-none focus:text-cricket-green p-2 rounded-lg hover:bg-green-50 transition-all duration-300" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2 bg-white/95 backdrop-blur-md border-t border-gray-100">
+                <a href="index.html" class="text-gray-900 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
+                <a href="career-hub.html" class="text-cricket-green bg-green-50 block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300">Career Hub</a>
+                <a href="login.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white block px-4 py-3 rounded-xl text-base font-semibold hover:shadow-lg transition-all duration-300 text-center">
+                    <i class="fas fa-user-plus mr-2"></i>Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white overflow-hidden pt-20">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-cricket-gold rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+        <div class="absolute top-40 right-10 w-96 h-96 bg-cricket-green rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-10 animate-fade-in">
+                    <div class="space-y-6">
+                        <div class="inline-block">
+                            <span class="bg-gradient-to-r from-cricket-gold to-yellow-400 text-orange-600 px-6 py-2 rounded-full text-sm font-semibold mb-6 inline-block">
+                                <i class="fas fa-apple-alt mr-2"></i>Sports Nutrition
+                            </span>
+                        </div>
+                        <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight">
+                            Fuel Your Performance 
+                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                                Like a Pro
+                            </span>
+                        </h1>
+                        <p class="text-xl md:text-2xl text-gray-100 leading-relaxed max-w-2xl">
+                            A sports nutritionist will create a personalized blueprint for what to eat before, during, and after a match to maximize energy and recovery.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6">
+                        <button onclick="scrollToBooking()" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-orange-600 px-10 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 text-center">
+                            <i class="fas fa-play mr-3 group-hover:scale-110 transition-transform duration-300"></i>Get Your Blueprint - £90
+                        </button>
+                        <a href="#features" class="group glass-effect border-2 border-white/30 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/20 hover:scale-105 transition-all duration-300 text-center">
+                            <i class="fas fa-info-circle mr-3 group-hover:scale-110 transition-transform duration-300"></i>Learn More
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="flex flex-wrap items-center gap-8 pt-8">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-star text-cricket-gold"></i>
+                            <span class="text-sm text-gray-200">4.8/5 Rating (95+ reviews)</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shield-alt text-cricket-gold"></i>
+                            <span class="text-sm text-gray-200">Sports Nutritionists</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock text-cricket-gold"></i>
+                            <span class="text-sm text-gray-200">Detailed PDF Guide</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative animate-slide-up">
+                    <!-- Nutrition Preview Card -->
+                    <div class="glass-effect rounded-3xl p-10 shadow-2xl">
+                        <div class="text-center space-y-8">
+                            <div class="w-24 h-24 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto shadow-lg animate-pulse-slow">
+                                <i class="fas fa-apple-alt text-4xl text-orange-600"></i>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-3xl font-bold mb-2">Match Day Nutrition Blueprint</h3>
+                                <p class="text-gray-200 text-lg">Personalized nutrition plan for optimal performance</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="text-center group">
+                                    <div class="text-2xl font-black text-cricket-gold mb-2 group-hover:scale-110 transition-transform duration-300">PDF</div>
+                                    <div class="text-sm text-gray-300 font-medium">Guide</div>
+                                </div>
+                                <div class="text-center group">
+                                    <div class="text-2xl font-black text-cricket-gold mb-2 group-hover:scale-110 transition-transform duration-300">24/7</div>
+                                    <div class="text-sm text-gray-300 font-medium">Timeline</div>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-4">
+                                <div class="flex items-center justify-center space-x-4 text-sm text-gray-300">
+                                    <span class="flex items-center">
+                                        <i class="fas fa-utensils text-cricket-gold mr-2"></i>
+                                        Meal Plans
+                                    </span>
+                                    <span class="flex items-center">
+                                        <i class="fas fa-tint text-cricket-gold mr-2"></i>
+                                        Hydration
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Overview -->
+    <section id="features" class="py-32 bg-gradient-to-br from-white via-gray-50 to-orange-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    What You'll Receive
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    A detailed PDF guide based on an initial questionnaire, covering all aspects of match day nutrition
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-file-alt text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Detailed PDF Guide</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        A comprehensive nutrition guide covering pre-match, during-match, and post-match nutrition strategies.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-orange-500 mr-3"></i>
+                            Pre-match fueling
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-orange-500 mr-3"></i>
+                            During-match nutrition
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-orange-500 mr-3"></i>
+                            Recovery strategies
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cricket-gold to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-clipboard-list text-3xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Initial Questionnaire</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Comprehensive questionnaire to understand your dietary preferences, restrictions, and performance goals.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Dietary preferences
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Food restrictions
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-gold mr-3"></i>
+                            Performance goals
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cricket-green to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <i class="fas fa-utensils text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Personalized Meal Plans</h3>
+                    <p class="text-gray-600 text-center leading-relaxed mb-6">
+                        Custom meal plans and snack suggestions tailored to your specific needs and match schedule.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Custom meal plans
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Snack suggestions
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-cricket-green mr-3"></i>
+                            Hydration strategies
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Nutritionists Section -->
+    <section class="py-32 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">
+                    Your Expert 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cricket-gold to-yellow-300">
+                        Sports Nutritionists
+                    </span>
+                </h2>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                    Qualified sports nutritionists with extensive experience in cricket performance nutrition
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold mb-4">Sports Nutrition Expertise</h3>
+                        <p class="text-gray-200 mb-6">
+                            Our nutritionists specialize in sports nutrition and understand the unique energy demands of cricket, from long batting innings to intense bowling spells.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-graduation-cap text-cricket-gold text-2xl"></i>
+                            <span class="text-lg font-semibold">Qualified Nutritionists</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold mb-4">Cricket-Specific Knowledge</h3>
+                        <p class="text-gray-200 mb-6">
+                            They understand the specific nutritional needs of cricket players, including the importance of sustained energy, hydration, and recovery in cricket's unique format.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-cricket text-cricket-gold text-2xl"></i>
+                            <span class="text-lg font-semibold">Cricket Specialists</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Success Story</h3>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-cricket-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-quote-left text-2xl text-orange-600"></i>
+                        </div>
+                        <blockquote class="text-lg text-gray-200 italic mb-6">
+                            "The nutrition blueprint completely changed my match day performance. I had consistent energy throughout long innings and recovered much faster between matches."
+                        </blockquote>
+                        <div class="text-cricket-gold font-semibold">- Emma, 21, County Academy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Booking Section -->
+    <section id="booking" class="py-32 bg-gradient-to-br from-white via-gray-50 to-orange-50 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <div class="bg-white rounded-3xl shadow-2xl p-16 border border-gray-100">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    Ready to Fuel Your 
+                    <span class="gradient-text">Performance?</span>
+                </h2>
+                <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Get a personalized nutrition blueprint designed to maximize your energy and recovery on match days.
+                </p>
+                
+                <!-- Pricing Card -->
+                <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl p-12 text-white mb-12 max-w-2xl mx-auto">
+                    <div class="text-center">
+                        <h3 class="text-3xl font-bold mb-4">Match Day Nutrition Blueprint</h3>
+                        <div class="text-6xl font-black mb-4">£90</div>
+                        <p class="text-xl text-gray-200 mb-8">One-time blueprint</p>
+                        
+                        <div class="space-y-4 text-left">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Detailed PDF nutrition guide</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Initial questionnaire assessment</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Personalized meal plans</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Pre, during, and post-match strategies</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-cricket-gold mr-4 text-xl"></i>
+                                <span>Hydration and recovery guidance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="openBookingModal()" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-orange-600 px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center mb-8">
+                    <i class="fas fa-play mr-3 group-hover:scale-110 transition-transform duration-300"></i>Get Your Blueprint Now
+                </button>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap items-center justify-center gap-8 pt-8 border-t border-gray-200">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-shield-alt text-orange-500 text-xl"></i>
+                        <span class="text-gray-600 font-medium">Secure Payment</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-graduation-cap text-cricket-gold text-xl"></i>
+                        <span class="text-gray-600 font-medium">Qualified Nutritionists</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-file-pdf text-cricket-green text-xl"></i>
+                        <span class="text-gray-600 font-medium">Detailed PDF Guide</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-32 bg-gradient-to-br from-gray-50 via-white to-orange-50 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    Frequently Asked 
+                    <span class="gradient-text">Questions</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Everything you need to know about our match day nutrition blueprint service
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">What information do I need to provide?</h3>
+                    <p class="text-gray-600">You'll complete a detailed questionnaire covering your dietary preferences, food restrictions, current eating habits, match schedule, and performance goals. This helps us create a personalized nutrition plan.</p>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">How detailed is the nutrition guide?</h3>
+                    <p class="text-gray-600">The guide is comprehensive, covering pre-match meals (24-48 hours before), match day breakfast, during-match snacks and hydration, and post-match recovery nutrition. It includes specific food suggestions, timing, and portion guidance.</p>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Can the plan accommodate dietary restrictions?</h3>
+                    <p class="text-gray-600">Yes, absolutely. The questionnaire includes questions about dietary restrictions, allergies, and preferences. Our nutritionists will create a plan that works within your dietary requirements while optimizing your performance.</p>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Is this suitable for different cricket formats?</h3>
+                    <p class="text-gray-600">Yes, the nutrition blueprint takes into account different cricket formats (T20, 50-over, multi-day) and adjusts recommendations accordingly. The plan considers the different energy demands of each format.</p>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">How long does it take to receive the blueprint?</h3>
+                    <p class="text-gray-600">You'll receive your personalized nutrition blueprint within 5-7 business days of completing the questionnaire. This allows our nutritionists time to create a comprehensive, tailored plan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-orange-500 text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 cricket-pattern opacity-5"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cricket-gold via-cricket-green to-cricket-blue"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-8 group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cricket-gold via-orange-500 to-cricket-blue rounded-2xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-2xl"></i>
+                        </div>
+                        <span class="text-3xl font-black gradient-text">Scylla</span>
+                    </div>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed max-w-md">
+                        The premier platform connecting cricket talent with opportunities across the UK. Building the next generation of cricket stars.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-orange-500 transition-all duration-300 group">
+                            <i class="fab fa-twitter text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-orange-500 transition-all duration-300 group">
+                            <i class="fab fa-facebook text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-orange-500 transition-all duration-300 group">
+                            <i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cricket-gold hover:text-orange-500 transition-all duration-300 group">
+                            <i class="fab fa-linkedin text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">For Players</h3>
+                    <ul class="space-y-4">
+                        <li><a href="signup.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Create Profile
+                        </a></li>
+                        <li><a href="find-opportunities.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Find Opportunities
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Career Hub
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-cricket-gold">Services</h3>
+                    <ul class="space-y-4">
+                        <li><a href="nutrition-blueprint.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>Nutrition Blueprint
+                        </a></li>
+                        <li><a href="career-hub.html" class="text-gray-300 hover:text-cricket-gold transition-all duration-300 flex items-center group">
+                            <i class="fas fa-arrow-right text-xs mr-3 group-hover:translate-x-1 transition-transform duration-300"></i>All Services
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-16 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">&copy; 2024 Scylla. All rights reserved.</p>
+                    <div class="flex space-x-8 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-cricket-gold text-sm transition-all duration-300 hover:scale-105">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">Get Your Nutrition Blueprint</h3>
+                <button onclick="closeBookingModal()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" required>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                    <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Age</label>
+                    <input type="number" min="16" max="35" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Primary Role</label>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" required>
+                        <option value="">Select your role</option>
+                        <option value="batsman">Batsman</option>
+                        <option value="bowler">Bowler</option>
+                        <option value="all-rounder">All-Rounder</option>
+                        <option value="wicket-keeper">Wicket-Keeper</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Dietary Restrictions</label>
+                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" rows="2" placeholder="Any dietary restrictions, allergies, or preferences? (e.g., vegetarian, gluten-free, nut allergies)..." required></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Current Eating Habits</label>
+                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" rows="3" placeholder="Describe your current eating habits and any challenges you face with nutrition on match days..." required></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Performance Goals</label>
+                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" rows="2" placeholder="What are your main nutrition-related performance goals? (e.g., sustained energy, faster recovery, better hydration)..." required></textarea>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <h4 class="font-semibold text-gray-900 mb-4">Service Summary</h4>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Match Day Nutrition Blueprint</span>
+                        <span class="font-bold text-orange-500">£90</span>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-2">Includes: Detailed PDF guide, personalized meal plans, and nutrition strategies</div>
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-4 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-credit-card mr-2"></i>Proceed to Payment
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        function scrollToBooking() {
+            document.getElementById('booking').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Booking modal functions
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBookingModal();
+            }
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would integrate with your payment processor
+            alert('Thank you for your booking! You will be redirected to our secure payment page.');
+        });
+    </script>
+</body>
+</html>
