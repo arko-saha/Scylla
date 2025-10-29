@@ -429,11 +429,11 @@
                             </div>
                         </div>
                         <div class="flex space-x-3">
-                            <button class="flex-1 bg-gradient-to-r from-cricket-green to-green-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <button onclick="viewProfile('james-mitchell')" class="flex-1 bg-gradient-to-r from-cricket-green to-green-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
                                 <i class="fas fa-eye mr-2"></i>View Profile
                             </button>
-                            <button class="px-4 py-3 border-2 border-cricket-green text-cricket-green rounded-xl hover:bg-cricket-green hover:text-white transition-all duration-300">
-                                <i class="fas fa-heart"></i>
+                            <button onclick="toggleFavorite(this)" class="px-4 py-3 border-2 border-cricket-green text-cricket-green rounded-xl hover:bg-cricket-green hover:text-white transition-all duration-300">
+                                <i class="far fa-heart"></i>
                             </button>
                         </div>
                     </div>
@@ -474,11 +474,11 @@
                             </div>
                         </div>
                         <div class="flex space-x-3">
-                            <button class="flex-1 bg-gradient-to-r from-cricket-blue to-blue-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <button onclick="viewProfile('emma-chen')" class="flex-1 bg-gradient-to-r from-cricket-blue to-blue-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
                                 <i class="fas fa-eye mr-2"></i>View Profile
                             </button>
-                            <button class="px-4 py-3 border-2 border-cricket-blue text-cricket-blue rounded-xl hover:bg-cricket-blue hover:text-white transition-all duration-300">
-                                <i class="fas fa-heart"></i>
+                            <button onclick="toggleFavorite(this)" class="px-4 py-3 border-2 border-cricket-blue text-cricket-blue rounded-xl hover:bg-cricket-blue hover:text-white transition-all duration-300">
+                                <i class="far fa-heart"></i>
                             </button>
                         </div>
                     </div>
@@ -519,11 +519,11 @@
                             </div>
                         </div>
                         <div class="flex space-x-3">
-                            <button class="flex-1 bg-gradient-to-r from-cricket-purple to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <button onclick="viewProfile('alex-patel')" class="flex-1 bg-gradient-to-r from-cricket-purple to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
                                 <i class="fas fa-eye mr-2"></i>View Profile
                             </button>
-                            <button class="px-4 py-3 border-2 border-cricket-purple text-cricket-purple rounded-xl hover:bg-cricket-purple hover:text-white transition-all duration-300">
-                                <i class="fas fa-heart"></i>
+                            <button onclick="toggleFavorite(this)" class="px-4 py-3 border-2 border-cricket-purple text-cricket-purple rounded-xl hover:bg-cricket-purple hover:text-white transition-all duration-300">
+                                <i class="far fa-heart"></i>
                             </button>
                         </div>
                     </div>
@@ -957,11 +957,11 @@
                         </div>
                     </div>
                     <div class="flex space-x-3">
-                        <button class="flex-1 bg-gradient-to-r ${player.gradient} text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        <button onclick="viewProfile('${player.name.toLowerCase().replace(/\s+/g, '-')}')" class="flex-1 bg-gradient-to-r ${player.gradient} text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
                             <i class="fas fa-eye mr-2"></i>View Profile
                         </button>
-                        <button class="px-4 py-3 border-2 border-${player.gradient.includes('green') ? 'cricket-green' : player.gradient.includes('blue') ? 'cricket-blue' : 'cricket-purple'} text-${player.gradient.includes('green') ? 'cricket-green' : player.gradient.includes('blue') ? 'cricket-blue' : 'cricket-purple'} rounded-xl hover:bg-${player.gradient.includes('green') ? 'cricket-green' : player.gradient.includes('blue') ? 'cricket-blue' : 'cricket-purple'} hover:text-white transition-all duration-300">
-                            <i class="fas fa-heart"></i>
+                        <button onclick="toggleFavorite(this)" class="px-4 py-3 border-2 border-${player.gradient.includes('green') ? 'cricket-green' : player.gradient.includes('blue') ? 'cricket-blue' : 'cricket-purple'} text-${player.gradient.includes('green') ? 'cricket-green' : player.gradient.includes('blue') ? 'cricket-blue' : 'cricket-purple'} rounded-xl hover:bg-${player.gradient.includes('green') ? 'cricket-green' : player.gradient.includes('blue') ? 'cricket-blue' : 'cricket-purple'} hover:text-white transition-all duration-300">
+                            <i class="far fa-heart"></i>
                         </button>
                     </div>
                 </div>
@@ -990,6 +990,41 @@
         document.addEventListener('DOMContentLoaded', function() {
             displayPlayers();
         });
+
+        // View Profile function
+        function viewProfile(playerId) {
+            // Redirect to player profile page with player ID
+            window.location.href = 'player-profile.html?player=' + playerId;
+        }
+
+        // Toggle heart/favorite function
+        function toggleFavorite(element) {
+            element.classList.toggle('fas');
+            element.classList.toggle('far');
+            
+            // Change color when favorited
+            if (element.classList.contains('fas')) {
+                element.style.color = '#ef4444'; // red
+            } else {
+                element.style.color = '';
+            }
+            
+            // Show toast notification
+            const message = element.classList.contains('fas') ? 'Added to favorites' : 'Removed from favorites';
+            showToast(message);
+        }
+
+        // Simple toast notification function
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-4 right-4 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 2000);
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Scylla</title>
+    <meta name="description" content="Manage your Scylla account, services, and activity">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        .sidebar-item.active {
+            background: linear-gradient(135deg, #16a34a, #2563eb);
+            color: white;
+        }
+
+        .sidebar-item.active i {
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-cricket text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Scylla</span>
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-600 hover:text-green-600 transition">Home</a>
+                    <a href="find-talent.html" class="text-gray-600 hover:text-green-600 transition">Find Talent</a>
+                    <a href="find-opportunities.html" class="text-gray-600 hover:text-green-600 transition">Find Opportunities</a>
+                    <a href="career-hub.html" class="text-gray-600 hover:text-green-600 transition">Career Hub</a>
+                    <a href="#" class="bg-gradient-to-r from-green-600 to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:shadow-lg transition">My Profile</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- User Profile Card -->
+        <div class="bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl shadow-xl text-white p-8 mb-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                    <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center text-3xl font-bold border-4 border-white/30">
+                        JD
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">John Doe</h1>
+                        <p class="text-white/80">john.doe@example.com</p>
+                        <p class="text-sm text-white/70">Active Member since Jan 2024</p>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <a href="#" class="bg-white text-green-600 hover:bg-green-50 px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center shadow-lg hover:shadow-xl" onclick="openSettings()">
+                        <i class="fas fa-cog mr-2"></i>Account Settings
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Sidebar Navigation -->
+            <aside class="w-full md:w-64 flex-shrink-0">
+                <div class="bg-white rounded-xl shadow-sm p-4 space-y-2">
+                    <div class="sidebar-item active flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition" data-section="dashboard">
+                        <i class="fas fa-home w-5 text-gray-600"></i>
+                        <span>Dashboard</span>
+                    </div>
+                    <div class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition" data-section="services">
+                        <i class="fas fa-concierge-bell w-5 text-gray-600"></i>
+                        <span>My Services</span>
+                    </div>
+                    <div class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition" data-section="subscriptions">
+                        <i class="fas fa-crown w-5 text-gray-600"></i>
+                        <span>Subscriptions</span>
+                    </div>
+                    <div class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition" data-section="portfolio">
+                        <i class="fas fa-folder-open w-5 text-gray-600"></i>
+                        <span>Portfolio</span>
+                    </div>
+                    <div class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition" data-section="payment">
+                        <i class="fas fa-credit-card w-5 text-gray-600"></i>
+                        <span>Payment & Billing</span>
+                    </div>
+                    <div class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition" data-section="watchlist">
+                        <i class="fas fa-bookmark w-5 text-gray-600"></i>
+                        <span>Watchlist</span>
+                    </div>
+                    <div class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition" data-section="settings">
+                        <i class="fas fa-cog w-5 text-gray-600"></i>
+                        <span>Settings</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="flex-1">
+                <!-- Dashboard Section -->
+                <div id="dashboard" class="content-section active">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-white rounded-xl shadow-sm p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-gray-600 font-medium">Active Services</h3>
+                                <i class="fas fa-concierge-bell text-blue-500"></i>
+                            </div>
+                            <p class="text-3xl font-bold text-gray-900">3</p>
+                            <p class="text-sm text-gray-500 mt-2">Ongoing bookings</p>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-gray-600 font-medium">Total Spent</h3>
+                                <i class="fas fa-pound-sign text-green-500"></i>
+                            </div>
+                            <p class="text-3xl font-bold text-gray-900">£780</p>
+                            <p class="text-sm text-gray-500 mt-2">This year</p>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-gray-600 font-medium">Watchlist</h3>
+                                <i class="fas fa-bookmark text-purple-500"></i>
+                            </div>
+                            <p class="text-3xl font-bold text-gray-900">12</p>
+                            <p class="text-sm text-gray-500 mt-2">Saved opportunities</p>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Recent Activity</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4 p-4 border border-gray-200 rounded-lg">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-900">Booking Confirmed</p>
+                                    <p class="text-sm text-gray-500">Performance Analytics - Session scheduled</p>
+                                </div>
+                                <span class="text-sm text-gray-500">2 days ago</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 border border-gray-200 rounded-lg">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-file-alt text-blue-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-900">Portfolio Updated</p>
+                                    <p class="text-sm text-gray-500">Added 3 new performance videos</p>
+                                </div>
+                                <span class="text-sm text-gray-500">5 days ago</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 border border-gray-200 rounded-lg">
+                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-heart text-purple-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-900">Added to Watchlist</p>
+                                    <p class="text-sm text-gray-500">Surrey County Championship Position</p>
+                                </div>
+                                <span class="text-sm text-gray-500">1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Services Section -->
+                <div id="services" class="content-section">
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">My Services</h2>
+                        
+                        <!-- Active Bookings -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-4">Active Bookings</h3>
+                            <div class="space-y-4">
+                                <div class="border border-gray-200 rounded-xl p-6">
+                                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                        <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                                            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                                <i class="fas fa-chart-line text-indigo-600"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold text-gray-900">Performance Analytics</h4>
+                                                <p class="text-sm text-gray-500">Session scheduled for Jan 25, 2024</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Confirmed</span>
+                                            <button class="text-blue-600 hover:text-blue-700 font-medium">View Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border border-gray-200 rounded-xl p-6">
+                                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                        <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                                <i class="fas fa-file-contract text-purple-600"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold text-gray-900">Contract Consultation</h4>
+                                                <p class="text-sm text-gray-500">Review scheduled for Jan 28, 2024</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Pending</span>
+                                            <button class="text-blue-600 hover:text-blue-700 font-medium">View Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Service History -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-700 mb-4">Service History</h3>
+                            <div class="space-y-4">
+                                <div class="border border-gray-200 rounded-xl p-6 opacity-75">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                                <i class="fas fa-dumbbell text-green-600"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold text-gray-900">Strength & Conditioning</h4>
+                                                <p class="text-sm text-gray-500">Completed on Jan 15, 2024</p>
+                                            </div>
+                                        </div>
+                                        <button class="text-gray-600 hover:text-gray-700">View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subscriptions Section -->
+                <div id="subscriptions" class="content-section">
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Subscriptions</h2>
+                        
+                        <div class="border border-gray-200 rounded-xl p-6 mb-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Scylla Premium</h3>
+                                    <p class="text-gray-600">Access to exclusive features and priority support</p>
+                                </div>
+                                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Active</span>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                <div>
+                                    <p class="text-sm text-gray-500">Billing Cycle</p>
+                                    <p class="font-semibold">Monthly</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Next Billing</p>
+                                    <p class="font-semibold">Feb 1, 2024</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Amount</p>
+                                    <p class="font-semibold">£29.99/mo</p>
+                                </div>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition">Manage Plan</button>
+                                <button class="px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition">Cancel</button>
+                            </div>
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-gray-700 mb-4">Available Plans</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <h4 class="font-semibold text-gray-900 mb-2">Free</h4>
+                                <p class="text-3xl font-bold mb-2">£0<span class="text-lg text-gray-500">/mo</span></p>
+                                <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                                    <li>✓ Basic profile</li>
+                                    <li>✓ Limited listings</li>
+                                </ul>
+                                <button class="w-full px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">Current Plan</button>
+                            </div>
+                            <div class="border-2 border-blue-500 rounded-xl p-6 bg-blue-50">
+                                <h4 class="font-semibold text-gray-900 mb-2">Premium</h4>
+                                <p class="text-3xl font-bold mb-2">£29<span class="text-lg text-gray-500">/mo</span></p>
+                                <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                                    <li>✓ Everything in Free</li>
+                                    <li>✓ Priority support</li>
+                                    <li>✓ Advanced analytics</li>
+                                </ul>
+                                <button class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Current Plan</button>
+                            </div>
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <h4 class="font-semibold text-gray-900 mb-2">Elite</h4>
+                                <p class="text-3xl font-bold mb-2">£79<span class="text-lg text-gray-500">/mo</span></p>
+                                <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                                    <li>✓ Everything in Premium</li>
+                                    <li>✓ 1-on-1 coaching sessions</li>
+                                    <li>✓ Exclusive events</li>
+                                </ul>
+                                <button class="w-full px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition">Upgrade</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Section -->
+                <div id="portfolio" class="content-section">
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-bold text-gray-900">My Portfolio</h2>
+                            <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                                <i class="fas fa-plus mr-2"></i>Add Content
+                            </button>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="text-sm text-gray-600">Total Videos</p>
+                                <p class="text-2xl font-bold">12</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="text-sm text-gray-600">Total Views</p>
+                                <p class="text-2xl font-bold">1,247</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="text-sm text-gray-600">Last Updated</p>
+                                <p class="text-2xl font-bold">5 days</p>
+                            </div>
+                        </div>
+
+                        <!-- Portfolio Items -->
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-play text-gray-400 text-2xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900">Batting Technique Analysis - Jan 2024</h4>
+                                        <p class="text-sm text-gray-600">Uploaded 5 days ago • 124 views</p>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <button class="text-blue-600 hover:text-blue-700">Edit</button>
+                                        <button class="text-gray-600 hover:text-gray-700">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-play text-gray-400 text-2xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900">Fast Bowling Session - Dec 2023</h4>
+                                        <p class="text-sm text-gray-600">Uploaded 2 weeks ago • 89 views</p>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <button class="text-blue-600 hover:text-blue-700">Edit</button>
+                                        <button class="text-gray-600 hover:text-gray-700">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment & Billing Section -->
+                <div id="payment" class="content-section">
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Payment & Billing</h2>
+
+                        <!-- Payment Method -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-4">Payment Method</h3>
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-4">
+                                        <i class="fab fa-cc-visa text-3xl text-blue-600"></i>
+                                        <div>
+                                            <p class="font-semibold">**** **** **** 4242</p>
+                                            <p class="text-sm text-gray-500">Expires 12/2025</p>
+                                        </div>
+                                    </div>
+                                    <button class="text-blue-600 hover:text-blue-700 font-medium">Update</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Billing History -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-700 mb-4">Billing History</h3>
+                            <div class="space-y-4">
+                                <div class="border border-gray-200 rounded-xl p-6">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900">January 2024</h4>
+                                            <p class="text-sm text-gray-500">Scylla Premium Subscription</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-semibold">£29.99</p>
+                                            <p class="text-sm text-green-600">Paid</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border border-gray-200 rounded-xl p-6">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900">December 2023</h4>
+                                            <p class="text-sm text-gray-500">Scylla Premium Subscription + Services</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-semibold">£189.99</p>
+                                            <p class="text-sm text-green-600">Paid</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Watchlist Section -->
+                <div id="watchlist" class="content-section">
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-bold text-gray-900">My Watchlist</h2>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">12 items</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">Fast Bowler - Surrey County</h4>
+                                        <p class="text-sm text-gray-600 mt-1">Added 3 days ago</p>
+                                    </div>
+                                    <div class="flex items-center space-x-2 mt-4 md:mt-0">
+                                        <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Apply Now</button>
+                                        <button class="text-red-600 hover:text-red-700">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">All-Rounder - Middlesex</h4>
+                                        <p class="text-sm text-gray-600 mt-1">Added 5 days ago</p>
+                                    </div>
+                                    <div class="flex items-center space-x-2 mt-4 md:mt-0">
+                                        <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Apply Now</button>
+                                        <button class="text-red-600 hover:text-red-700">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div id="settings" class="content-section">
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Account Settings</h2>
+
+                        <!-- Profile Information -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-4">Profile Information</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                    <input type="text" value="John Doe" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                    <input type="email" value="john.doe@example.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                    <input type="tel" value="+44 7700 900123" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                </div>
+                                <button class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                                    Save Changes
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Security Settings -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-4">Security</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
+                                    <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+                                    <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
+                                    <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                </div>
+                                <button class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                                    Update Password
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Notification Preferences -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-4">Notification Preferences</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Email Notifications</p>
+                                        <p class="text-sm text-gray-500">Receive updates about your bookings and opportunities</p>
+                                    </div>
+                                    <input type="checkbox" checked class="w-5 h-5 text-green-600 rounded focus:ring-green-500">
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-medium text-gray-900">SMS Notifications</p>
+                                        <p class="text-sm text-gray-500">Get instant updates via text message</p>
+                                    </div>
+                                    <input type="checkbox" class="w-5 h-5 text-green-600 rounded focus:ring-green-500">
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Marketing Emails</p>
+                                        <p class="text-sm text-gray-500">Receive newsletters and promotional content</p>
+                                    </div>
+                                    <input type="checkbox" checked class="w-5 h-5 text-green-600 rounded focus:ring-green-500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Privacy Settings -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-4">Privacy</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Public Profile</p>
+                                        <p class="text-sm text-gray-500">Allow others to view your profile</p>
+                                    </div>
+                                    <input type="checkbox" checked class="w-5 h-5 text-green-600 rounded focus:ring-green-500">
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Show Email</p>
+                                        <p class="text-sm text-gray-500">Display your email on your public profile</p>
+                                    </div>
+                                    <input type="checkbox" class="w-5 h-5 text-green-600 rounded focus:ring-green-500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Danger Zone -->
+                        <div class="border-t border-gray-200 pt-6">
+                            <h3 class="text-lg font-semibold text-red-600 mb-4">Danger Zone</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-sm text-gray-600 mb-2">Once you delete your account, there is no going back. Please be certain.</p>
+                                    <button class="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+                                        Delete Account
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar navigation
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Show corresponding section
+                const section = this.getAttribute('data-section');
+                document.getElementById(section).classList.add('active');
+            });
+        });
+
+        // Function to open settings section from Account Settings button
+        function openSettings() {
+            // Remove active class from all items
+            document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            
+            // Add active class to settings item
+            const settingsItem = document.querySelector('[data-section="settings"]');
+            if (settingsItem) {
+                settingsItem.classList.add('active');
+                document.getElementById('settings').classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Profile - Scylla</title>
+    <meta name="description" content="View player profile and statistics">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2D5016 0%, #D4AF37 50%, #1E40AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center group">
+                    <div class="flex-shrink-0 flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cricket-green via-cricket-gold to-cricket-blue rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-cricket text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">Scylla</span>
+                    </div>
+                </a>
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="index.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Home</a>
+                        <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
+                        <a href="career-hub.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Career Hub</a>
+                        <a href="login.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                        <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-user-plus mr-2"></i>Sign Up
+                        </a>
+                    </div>
+                </div>
+                <button type="button" class="lg:hidden text-gray-700 hover:text-cricket-green p-2 rounded-lg" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Back Button -->
+            <a href="find-talent.html" class="inline-flex items-center text-gray-600 hover:text-cricket-green mb-6 transition">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Find Talent
+            </a>
+
+            <!-- Player Profile Header -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8" id="profile-header">
+                <!-- This will be populated by JavaScript -->
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" id="stats-grid">
+                <!-- Stats will be populated by JavaScript -->
+            </div>
+
+            <!-- Content Tabs -->
+            <div class="bg-white rounded-2xl shadow-lg mb-8">
+                <div class="border-b border-gray-200">
+                    <nav class="flex -mb-px">
+                        <button onclick="showTab('overview')" class="tab-button active px-6 py-4 font-semibold text-gray-700 border-b-2 border-cricket-green">
+                            Overview
+                        </button>
+                        <button onclick="showTab('performance')" class="tab-button px-6 py-4 font-semibold text-gray-500 hover:text-gray-700">
+                            Performance
+                        </button>
+                        <button onclick="showTab('videos')" class="tab-button px-6 py-4 font-semibold text-gray-500 hover:text-gray-700">
+                            Videos
+                        </button>
+                        <button onclick="showTab('reviews')" class="tab-button px-6 py-4 font-semibold text-gray-500 hover:text-gray-700">
+                            Reviews
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Tab Contents -->
+                <div class="p-8">
+                    <!-- Overview Tab -->
+                    <div id="overview-tab" class="tab-content">
+                        <div id="overview-content">
+                            <!-- Content will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Performance Tab -->
+                    <div id="performance-tab" class="tab-content hidden">
+                        <div id="performance-content">
+                            <!-- Content will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Videos Tab -->
+                    <div id="videos-tab" class="tab-content hidden">
+                        <div id="videos-content">
+                            <!-- Content will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Reviews Tab -->
+                    <div id="reviews-tab" class="tab-content hidden">
+                        <div id="reviews-content">
+                            <!-- Content will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact/CTA Section -->
+            <div class="bg-gradient-to-r from-cricket-green to-cricket-blue rounded-2xl shadow-lg p-8 text-white text-center">
+                <h3 class="text-2xl font-bold mb-4">Interested in this player?</h3>
+                <p class="mb-6 text-white/90">Get in touch to discuss opportunities</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-white text-cricket-green px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition">
+                        <i class="fas fa-envelope mr-2"></i>Contact Player
+                    </button>
+                    <button onclick="toggleFavorite(this)" class="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-cricket-green transition">
+                        <i class="far fa-heart mr-2"></i>Save to Watchlist
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Player data database
+        const playersData = {
+            'james-mitchell': {
+                name: 'James Mitchell',
+                age: 18,
+                location: 'Surrey',
+                role: 'RHB | Right-Arm Fast',
+                skills: ['Power Hitter', 'Yorker Expert'],
+                stats: { battingAvg: 45.2, bowlingAvg: 18.7, wickets: 24 },
+                performance: { battingAvg: 45.2, runs: 890, centuries: 3, fifties: 8, bowlingAvg: 18.7, wickets: 24, economy: 4.2, catches: 15 },
+                bio: 'Dedicated fast bowler with a passion for aggressive batting. Known for consistent performance and leadership on the field.',
+                form: 'Excellent',
+                rating: 4.8,
+                reviews: 12
+            },
+            'emma-chen': {
+                name: 'Emma Chen',
+                age: 17,
+                location: 'Yorkshire',
+                role: 'LHB | Left-Arm Orthodox',
+                skills: ['Agile Fielder', 'Spin Specialist'],
+                stats: { battingAvg: 38.9, bowlingAvg: 22.1, wickets: 19 },
+                performance: { battingAvg: 38.9, runs: 745, centuries: 2, fifties: 6, bowlingAvg: 22.1, wickets: 19, economy: 3.8, catches: 22 },
+                bio: 'Versatile all-rounder with exceptional fielding skills. Specializes in left-arm orthodox spin bowling and explosive batting.',
+                form: 'Good',
+                rating: 4.6,
+                reviews: 8
+            },
+            'alex-patel': {
+                name: 'Alex Patel',
+                age: 19,
+                location: 'London',
+                role: 'Wicket-Keeper | RHB',
+                skills: ['Quick Reflexes', 'Agile Movement'],
+                stats: { battingAvg: 42.5, stumpings: 12, catches: 18 },
+                performance: { battingAvg: 42.5, runs: 1020, centuries: 4, fifties: 10, stumpings: 12, catches: 18, runOuts: 5 },
+                bio: 'Dynamic wicket-keeper with excellent batting skills. Known for quick reflexes behind the stumps and aggressive stroke play.',
+                form: 'Outstanding',
+                rating: 4.9,
+                reviews: 15
+            },
+            'alex-thompson': {
+                name: 'Alex Thompson',
+                age: 19,
+                location: 'London',
+                role: 'RHB',
+                skills: ['Power Hitter', 'Agile Fielder'],
+                stats: { battingAvg: 42.5, strikeRate: 128.3, fifties: 12 },
+                performance: { battingAvg: 42.5, runs: 850, centuries: 2, fifties: 12, strikeRate: 128.3, catches: 18 },
+                bio: 'Aggressive opening batsman known for powerful hitting and consistent scoring. Excellent fielder with quick reflexes.',
+                form: 'Excellent',
+                rating: 4.9,
+                reviews: 23
+            },
+            'sarah-williams': {
+                name: 'Sarah Williams',
+                age: 21,
+                location: 'Manchester',
+                role: 'RHB | Right-Arm Medium',
+                skills: ['Agile Fielder'],
+                stats: { battingAvg: 38.2, bowlingAvg: 24.8, wickets: 32 },
+                performance: { battingAvg: 38.2, runs: 720, centuries: 1, fifties: 9, bowlingAvg: 24.8, wickets: 32, economy: 4.1 },
+                bio: 'Versatile all-rounder with solid batting technique and effective medium-pace bowling. Strong presence on the field.',
+                form: 'Good',
+                rating: 4.7,
+                reviews: 18
+            },
+            'emma-davis': {
+                name: 'Emma Davis',
+                age: 18,
+                location: 'Leeds',
+                role: 'Wicket-Keeper | RHB',
+                skills: ['Agile Fielder', 'Quick Stumping'],
+                stats: { battingAvg: 35.2, stumpings: 8, catches: 14 },
+                performance: { battingAvg: 35.2, runs: 560, fifties: 6, stumpings: 8, catches: 14, runOuts: 3 },
+                bio: 'Young wicket-keeper with promising batting abilities. Quick behind the stumps with a bright future ahead.',
+                form: 'Good',
+                rating: 4.6,
+                reviews: 15
+            },
+            'michael-brown': {
+                name: 'Michael Brown',
+                age: 22,
+                location: 'Bristol',
+                role: 'RHB | Right-Arm Fast',
+                skills: ['Power Hitter', 'Yorker Expert'],
+                stats: { battingAvg: 45.8, bowlingAvg: 28.3, runs: 920 },
+                performance: { battingAvg: 45.8, runs: 920, centuries: 5, fifties: 11, bowlingAvg: 28.3, wickets: 45, economy: 4.5 },
+                bio: 'Professional all-rounder with exceptional batting and bowling skills. Consistently performs at high levels.',
+                form: 'Excellent',
+                rating: 4.9,
+                reviews: 42
+            },
+            'sophie-wilson': {
+                name: 'Sophie Wilson',
+                age: 17,
+                location: 'London',
+                role: 'LHB',
+                skills: ['Power Hitter', 'Future Star'],
+                stats: { battingAvg: 28.4, strikeRate: 115.2, runs: 340 },
+                performance: { battingAvg: 28.4, runs: 340, fifties: 3, strikeRate: 115.2, catches: 8 },
+                bio: 'Promising young batsman with natural talent and determination. Shows great potential for future growth.',
+                form: 'Promising',
+                rating: 4.3,
+                reviews: 8
+            }
+        };
+
+        // Get player ID from URL or sessionStorage
+        function getPlayerId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const playerId = urlParams.get('player') || sessionStorage.getItem('viewedPlayer') || 'james-mitchell';
+            return playerId;
+        }
+
+        // Load player profile data
+        function loadPlayerProfile() {
+            const playerId = getPlayerId();
+            const player = playersData[playerId];
+
+            if (!player) {
+                document.getElementById('profile-header').innerHTML = '<div class="p-8 text-center text-red-600">Player not found</div>';
+                return;
+            }
+
+            // Update page title
+            document.title = player.name + ' - Player Profile | Scylla';
+
+            // Load profile header
+            document.getElementById('profile-header').innerHTML = `
+                <div class="p-8 flex flex-col md:flex-row items-center md:items-start">
+                    <div class="w-32 h-32 bg-gradient-to-br from-cricket-green to-cricket-blue rounded-full flex items-center justify-center text-white text-5xl font-bold mb-6 md:mb-0 md:mr-8">
+                        ${player.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h1 class="text-4xl font-bold text-gray-900 mb-2">${player.name}</h1>
+                        <p class="text-xl text-gray-600 mb-4">${player.age} years • ${player.location}</p>
+                        <p class="text-lg text-cricket-green font-semibold mb-4">${player.role}</p>
+                        <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                            ${player.skills.map(skill => `<span class="bg-gradient-to-r from-cricket-green to-green-600 text-white px-4 py-2 rounded-full text-sm font-medium">${skill}</span>`).join('')}
+                        </div>
+                        <div class="mt-4 flex items-center justify-center md:justify-start">
+                            <span class="text-yellow-500 text-xl mr-2">${'★'.repeat(Math.floor(player.rating))}${'☆'.repeat(5 - Math.floor(player.rating))}</span>
+                            <span class="text-gray-600">${player.rating} (${player.reviews} reviews)</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Load stats grid
+            document.getElementById('stats-grid').innerHTML = Object.entries(player.stats).map(([key, value]) => `
+                <div class="bg-white rounded-xl shadow-md p-6 text-center">
+                    <div class="text-3xl font-bold text-cricket-green mb-2">${value}</div>
+                    <div class="text-sm text-gray-600 uppercase">${key.replace(/([A-Z])/g, ' $1').trim()}</div>
+                </div>
+            `).join('');
+
+            // Load overview tab
+            document.getElementById('overview-content').innerHTML = `
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">About</h3>
+                <p class="text-gray-600 mb-6">${player.bio}</p>
+                <h4 class="text-xl font-bold text-gray-900 mb-3">Current Form: <span class="text-green-600">${player.form}</span></h4>
+                <h4 class="text-xl font-bold text-gray-900 mb-3">Location: ${player.location}</h4>
+                <h4 class="text-xl font-bold text-gray-900 mb-3">Age: ${player.age} years</h4>
+            `;
+
+            // Load performance tab
+            document.getElementById('performance-content').innerHTML = `
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Performance Statistics</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    ${Object.entries(player.performance).map(([key, value]) => `
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="text-sm text-gray-600 mb-1">${key.replace(/([A-Z])/g, ' $1').trim()}</div>
+                            <div class="text-2xl font-bold text-cricket-green">${value}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            // Load videos tab
+            document.getElementById('videos-content').innerHTML = `
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Highlights & Performance Videos</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-200 rounded-lg aspect-video flex items-center justify-center">
+                        <i class="fas fa-play-circle text-gray-400 text-6xl"></i>
+                    </div>
+                    <div class="bg-gray-200 rounded-lg aspect-video flex items-center justify-center">
+                        <i class="fas fa-play-circle text-gray-400 text-6xl"></i>
+                    </div>
+                </div>
+            `;
+
+            // Load reviews tab
+            document.getElementById('reviews-content').innerHTML = `
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Reviews</h3>
+                <div class="space-y-6">
+                    <div class="border border-gray-200 rounded-lg p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-sm text-gray-500">2 days ago</span>
+                        </div>
+                        <p class="text-gray-600">Excellent performance and great attitude on the field. Highly recommended!</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-yellow-500">★★★★☆</span>
+                            <span class="text-sm text-gray-500">1 week ago</span>
+                        </div>
+                        <p class="text-gray-600">Strong player with good technique. Great to work with.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Tab switching
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active', 'border-cricket-green', 'text-gray-700');
+                btn.classList.add('text-gray-500');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.remove('hidden');
+            event.target.classList.add('active', 'border-cricket-green', 'text-gray-700');
+            event.target.classList.remove('text-gray-500');
+        }
+
+        // Toggle favorite
+        function toggleFavorite(element) {
+            const icon = element.querySelector('i');
+            icon.classList.toggle('fas');
+            icon.classList.toggle('far');
+            
+            if (icon.classList.contains('fas')) {
+                icon.style.color = '#ef4444';
+                showToast('Saved to watchlist');
+            } else {
+                icon.style.color = '';
+                showToast('Removed from watchlist');
+            }
+        }
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-4 right-4 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.remove(), 2000);
+        }
+
+        // Load profile on page load
+        window.onload = function() {
+            loadPlayerProfile();
+        };
+    </script>
+</body>
+</html>
+

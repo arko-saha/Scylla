@@ -90,10 +90,15 @@
                         <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
                         <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
                         <a href="career-hub.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Career Hub</a>
-                        <a href="login.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
-                        <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-user-plus mr-2"></i>Sign Up
-                        </a>
+                        <!-- My Profile - only show when logged in -->
+                        <a href="my-profile.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300" id="my-profile-link" style="display: none;">My Profile</a>
+                        <!-- Login/Signup - only show when not logged in -->
+                        <div id="auth-buttons" class="flex items-center space-x-1">
+                            <a href="login.html" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                            <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                                <i class="fas fa-user-plus mr-2"></i>Sign Up
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
@@ -113,10 +118,15 @@
                 <a href="find-talent.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Talent</a>
                 <a href="find-opportunities.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Find Opportunities</a>
                 <a href="career-hub.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Career Hub</a>
-                <a href="login.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
-                <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white block px-4 py-3 rounded-xl text-base font-semibold hover:shadow-lg transition-all duration-300 text-center">
-                    <i class="fas fa-user-plus mr-2"></i>Sign Up
-                </a>
+                <!-- My Profile - only show when logged in -->
+                <a href="my-profile.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300" id="my-profile-link-mobile" style="display: none;">My Profile</a>
+                <!-- Login/Signup - only show when not logged in -->
+                <div id="auth-buttons-mobile" class="space-y-2">
+                    <a href="login.html" class="text-gray-700 hover:text-cricket-green block px-4 py-3 text-base font-medium rounded-lg hover:bg-green-50 transition-all duration-300">Login</a>
+                    <a href="signup.html" class="bg-gradient-to-r from-cricket-green to-cricket-blue text-white block px-4 py-3 rounded-xl text-base font-semibold hover:shadow-lg transition-all duration-300 text-center">
+                        <i class="fas fa-user-plus mr-2"></i>Sign Up
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -431,7 +441,7 @@
                             </div>
                         </div>
                         
-                        <button class="w-full bg-gradient-to-r from-cricket-green to-cricket-blue text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        <button onclick="viewProfile('james-mitchell')" class="w-full bg-gradient-to-r from-cricket-green to-cricket-blue text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
                             View Profile
                         </button>
                     </div>
@@ -471,7 +481,7 @@
                             </div>
                         </div>
                         
-                        <button class="w-full bg-gradient-to-r from-cricket-gold to-yellow-500 text-cricket-green py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        <button onclick="viewProfile('emma-chen')" class="w-full bg-gradient-to-r from-cricket-gold to-yellow-500 text-cricket-green py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
                             View Profile
                         </button>
                     </div>
@@ -511,7 +521,7 @@
                             </div>
                         </div>
                         
-                        <button class="w-full bg-gradient-to-r from-cricket-blue to-cricket-purple text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        <button onclick="viewProfile('alex-patel')" class="w-full bg-gradient-to-r from-cricket-blue to-cricket-purple text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
                             View Profile
                         </button>
                     </div>
@@ -601,6 +611,9 @@
                     </a>
                     <a href="find-talent.html" class="group glass-effect border-2 border-cricket-green text-cricket-green px-12 py-5 rounded-2xl text-lg font-bold hover:bg-cricket-green hover:text-white hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
                         <i class="fas fa-search mr-3 group-hover:scale-110 transition-transform duration-300"></i>Find Talent
+                    </a>
+                    <a href="s-c-program.html" class="group bg-gradient-to-r from-cricket-gold to-yellow-400 text-cricket-green px-12 py-5 rounded-2xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-dumbbell mr-3 group-hover:scale-110 transition-transform duration-300"></i>Personalized S&C Program Design
                     </a>
                 </div>
                 
@@ -728,47 +741,93 @@
             });
         });
 
-        // Check authentication status
-        window.onload = function() {
+        // Check authentication status and update navigation
+        function updateNavigation() {
             const user = localStorage.getItem('user');
+            const myProfileLink = document.getElementById('my-profile-link');
+            const myProfileLinkMobile = document.getElementById('my-profile-link-mobile');
+            const authButtons = document.getElementById('auth-buttons');
+            const authButtonsMobile = document.getElementById('auth-buttons-mobile');
+            
             if (user) {
                 try {
                     const userData = JSON.parse(user);
                     console.log('User is logged in:', userData);
                     
-                    // Update navigation to show user is logged in
-                    const loginLink = document.querySelector('a[href="login.html"]');
-                    const signupLink = document.querySelector('a[href="signup.html"]');
+                    // Show My Profile links
+                    if (myProfileLink) myProfileLink.style.display = 'block';
+                    if (myProfileLinkMobile) myProfileLinkMobile.style.display = 'block';
                     
-                    if (loginLink && signupLink) {
-                        // Replace login/signup with user menu
-                        const userMenu = document.createElement('div');
-                        userMenu.className = 'flex items-center space-x-4';
-                        userMenu.innerHTML = `
-                            <span class="text-gray-700 text-sm">Welcome, ${userData.name || userData.email}</span>
-                            <button onclick="logout()" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">
-                                Logout
-                            </button>
-                        `;
-                        
-                        // Replace the login/signup links
-                        const navContainer = loginLink.parentNode;
-                        navContainer.innerHTML = '';
-                        navContainer.appendChild(userMenu);
-                    }
+                    // Hide Login/Signup buttons
+                    if (authButtons) authButtons.style.display = 'none';
+                    if (authButtonsMobile) authButtonsMobile.style.display = 'none';
                 } catch (error) {
                     console.error('Error parsing user data:', error);
                     localStorage.removeItem('user');
+                    // Show auth buttons if error
+                    if (authButtons) authButtons.style.display = 'flex';
+                    if (authButtonsMobile) authButtonsMobile.style.display = 'block';
                 }
             } else {
                 console.log('User is not logged in');
+                
+                // Hide My Profile links
+                if (myProfileLink) myProfileLink.style.display = 'none';
+                if (myProfileLinkMobile) myProfileLinkMobile.style.display = 'none';
+                
+                // Show Login/Signup buttons
+                if (authButtons) authButtons.style.display = 'flex';
+                if (authButtonsMobile) authButtonsMobile.style.display = 'block';
             }
+        }
+        
+        // Update navigation on page load
+        window.onload = function() {
+            updateNavigation();
         };
+        
+        // Also update when coming back to the page
+        window.addEventListener('focus', updateNavigation);
 
         // Logout function
         function logout() {
             localStorage.removeItem('user');
             window.location.reload();
+        }
+
+        // View Profile function
+        function viewProfile(playerId) {
+            // Redirect to player profile page with player ID
+            window.location.href = 'player-profile.html?player=' + playerId;
+        }
+
+        // Toggle heart/favorite function
+        function toggleFavorite(element) {
+            element.classList.toggle('fas');
+            element.classList.toggle('far');
+            
+            // Change color when favorited
+            if (element.classList.contains('fas')) {
+                element.style.color = '#ef4444'; // red
+            } else {
+                element.style.color = '';
+            }
+            
+            // Show toast notification
+            const message = element.classList.contains('fas') ? 'Added to favorites' : 'Removed from favorites';
+            showToast(message);
+        }
+
+        // Simple toast notification function
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-4 right-4 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 2000);
         }
     </script>
 </body>
