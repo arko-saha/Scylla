@@ -727,6 +727,49 @@
                 }
             });
         });
+
+        // Check authentication status
+        window.onload = function() {
+            const user = localStorage.getItem('user');
+            if (user) {
+                try {
+                    const userData = JSON.parse(user);
+                    console.log('User is logged in:', userData);
+                    
+                    // Update navigation to show user is logged in
+                    const loginLink = document.querySelector('a[href="login.html"]');
+                    const signupLink = document.querySelector('a[href="signup.html"]');
+                    
+                    if (loginLink && signupLink) {
+                        // Replace login/signup with user menu
+                        const userMenu = document.createElement('div');
+                        userMenu.className = 'flex items-center space-x-4';
+                        userMenu.innerHTML = `
+                            <span class="text-gray-700 text-sm">Welcome, ${userData.name || userData.email}</span>
+                            <button onclick="logout()" class="text-gray-700 hover:text-cricket-green px-4 py-2 text-sm font-medium rounded-lg hover:bg-green-50 transition-all duration-300">
+                                Logout
+                            </button>
+                        `;
+                        
+                        // Replace the login/signup links
+                        const navContainer = loginLink.parentNode;
+                        navContainer.innerHTML = '';
+                        navContainer.appendChild(userMenu);
+                    }
+                } catch (error) {
+                    console.error('Error parsing user data:', error);
+                    localStorage.removeItem('user');
+                }
+            } else {
+                console.log('User is not logged in');
+            }
+        };
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.reload();
+        }
     </script>
 </body>
 </html>

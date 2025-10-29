@@ -120,7 +120,7 @@
 
                 <div class="mt-6">
                     <div id="g_id_onload"
-                         data-client_id="645217960319-1hahdp0kgksvprj054d15ls8ef2n3gt5.apps.googleusercontent.com"
+                         data-client_id="YOUR_GOOGLE_CLIENT_ID"
                          data-callback="handleGoogleSignIn"
                          data-auto_prompt="false">
                     </div>
@@ -238,12 +238,18 @@
 
         // Initialize Google Sign-In when page loads
         window.onload = function() {
-            // Note: In a real application, you would need to:
-            // 1. Get a Google OAuth client ID from Google Cloud Console
-            // 2. Replace 'YOUR_GOOGLE_CLIENT_ID' with your actual client ID
-            // 3. Configure the authorized domains in Google Cloud Console
-            
-            console.log('Login page loaded. Google Sign-In will work once you configure the client ID.');
+            // Check if Google OAuth is properly configured
+            const clientId = document.querySelector('#g_id_onload').getAttribute('data-client_id');
+            if (clientId === 'YOUR_GOOGLE_CLIENT_ID') {
+                // Hide Google OAuth section if not configured
+                const googleSection = document.querySelector('.mt-6');
+                if (googleSection) {
+                    googleSection.style.display = 'none';
+                }
+                console.log('Google OAuth not configured. Using email/password authentication only.');
+            } else {
+                console.log('Google Sign-In initialized with client ID:', clientId);
+            }
         };
     </script>
 </body>

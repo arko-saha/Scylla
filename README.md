@@ -12,7 +12,28 @@ A modern, responsive web platform connecting cricket talent with opportunities a
 
 ## 🚀 Live Demo
 
-Visit the live site: [https://scylla-cricket-platform.vercel.app](https://scylla-cricket-platform.vercel.app)
+Visit the live site: [https://scylla-talent-platform.vercel.app](https://scylla-talent-platform.vercel.app)
+
+## 🔐 Authentication
+
+The platform includes a demo authentication system:
+- **Email/Password**: Works immediately for testing
+- **Google OAuth**: Requires configuration (see GOOGLE_OAUTH_SETUP.md)
+
+### Demo Login
+You can test the platform by:
+1. Going to the Sign Up page
+2. Filling in any email and password
+3. Selecting your role (Player, Scout, or Admin)
+4. Creating an account
+
+The system will store your session locally and redirect you to the main page.
+
+### Troubleshooting Authentication
+If you see "don't have an account" messages:
+1. Clear your browser's localStorage
+2. Try creating a new account
+3. Check the browser console for any errors
 
 ## 🛠️ Technology Stack
 

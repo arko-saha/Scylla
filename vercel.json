@@ -1,16 +1,9 @@
 {
   "version": 2,
-  "name": "scylla-cricket-platform",
   "builds": [
     {
       "src": "*.html",
       "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
     }
   ],
   "headers": [
