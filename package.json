@@ -1,0 +1,27 @@
+{
+  "name": "scylla-cricket-platform",
+  "version": "1.0.0",
+  "description": "The Home of UK's Next Cricket Generation - A platform connecting cricket talent with opportunities",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site - no build step required'",
+    "start": "echo 'Static site - serve index.html'"
+  },
+  "keywords": [
+    "cricket",
+    "talent",
+    "platform",
+    "uk",
+    "sports",
+    "recruitment"
+  ],
+  "author": "Arko Saha",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
