@@ -989,10 +989,24 @@
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             displayPlayers();
+            
+            // Restore scroll position if coming back from player profile
+            const savedScrollPosition = sessionStorage.getItem('findTalentScrollPosition');
+            if (savedScrollPosition) {
+                // Wait for page to fully load before scrolling
+                setTimeout(() => {
+                    window.scrollTo(0, parseInt(savedScrollPosition));
+                    // Clear the saved position after restoring
+                    sessionStorage.removeItem('findTalentScrollPosition');
+                }, 100);
+            }
         });
 
         // View Profile function
         function viewProfile(playerId) {
+            // Save current scroll position before leaving
+            sessionStorage.setItem('findTalentScrollPosition', window.pageYOffset);
+            
             // Redirect to player profile page with player ID
             window.location.href = 'player-profile.html?player=' + playerId;
         }

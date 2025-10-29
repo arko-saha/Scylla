@@ -797,6 +797,9 @@
 
         // View Profile function
         function viewProfile(playerId) {
+            // Save current scroll position before leaving (for Find Talent page)
+            sessionStorage.setItem('findTalentScrollPosition', window.pageYOffset);
+            
             // Redirect to player profile page with player ID
             window.location.href = 'player-profile.html?player=' + playerId;
         }

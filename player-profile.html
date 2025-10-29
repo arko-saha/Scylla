@@ -64,7 +64,7 @@
     <div class="pt-24 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Back Button -->
-            <a href="find-talent.html" class="inline-flex items-center text-gray-600 hover:text-cricket-green mb-6 transition">
+            <a href="find-talent.html" id="back-button" class="inline-flex items-center text-gray-600 hover:text-cricket-green mb-6 transition" onclick="goBackToFindTalent(event)">
                 <i class="fas fa-arrow-left mr-2"></i>Back to Find Talent
             </a>
 
@@ -398,6 +398,22 @@
             document.body.appendChild(toast);
             
             setTimeout(() => toast.remove(), 2000);
+        }
+
+        // Function to go back to Find Talent and restore scroll position
+        function goBackToFindTalent(event) {
+            event.preventDefault();
+            
+            // Get the saved scroll position from sessionStorage
+            const scrollPosition = sessionStorage.getItem('findTalentScrollPosition');
+            
+            // Navigate to Find Talent page
+            window.location.href = 'find-talent.html';
+            
+            // Save the scroll position before leaving
+            if (scrollPosition) {
+                sessionStorage.setItem('findTalentScrollPosition', scrollPosition);
+            }
         }
 
         // Load profile on page load
